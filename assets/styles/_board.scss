@@ -1,0 +1,13 @@
+@import "mixins";
+
+.ag-filters-grid {
+  margin-bottom: 55px;
+  align-items: center;
+  @include setGrid(
+      repeat(auto-fit, minmax(220px, 250px)),
+      20px,
+      auto,
+      25px,
+      'both'
+  );
+}
