@@ -9,7 +9,7 @@
 export default function ({ $axios }, inject) {
   // Create a custom axios instance
   const api = $axios.create({
-    baseURL: `${process.env.LOCALHOST}:${process.env.PORT}/api/`
+    baseURL: `/api/`
   })
   inject('api', api)
 }

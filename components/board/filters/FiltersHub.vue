@@ -87,6 +87,23 @@ export default {
       this.$store.commit('SET_INF_DATA_TO_LOAD', true)
       this.$store.commit('board/RESET_ADS_LIST')
       await this.$store.dispatch('board/FETCH_FILTERED_ADS', this.filterData)
+      // const filteredAdsByPrice = []
+      // let adsList
+
+      // if (filteredAdsByPrice.length) {
+      //   adsList = filteredAdsByPrice
+      // } else {
+      //   adsList = this.$store.getters['board/filteredList']
+      // }
+
+      // const filteredAds = adsList.filter(item => {
+      //   for (const key in this.filterData) {
+      //     if (this.filterData[key] === null) return true
+      //     if (item[key] !== this.filterData[key]) return false
+      //   }
+      // })
+
+      // console.log('FA', filteredAds)
     }
   }
 }

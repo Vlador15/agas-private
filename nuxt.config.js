@@ -143,8 +143,7 @@ export default {
     id: process.env.GTM_ID,
     scriptDefer: true,
     pageTracking: true,
-    enabled: process.env.IS_PROD || false,
-    debug: true
+    enabled: process.env.IS_PROD || false
   },
   dayjs: {
     locales: ['en', 'ru', 'he'],
@@ -184,10 +183,7 @@ export default {
   },
 
   proxy: {
-    '/api/': {
-      target: `${process.env.API}`,
-      changeOrigin: true
-    },
+    '/api/': { target: `${process.env.API}`, changeOrigin: true },
     '/api_board/': {
       target: `${process.env.BOARD_API}`,
       changeOrigin: true

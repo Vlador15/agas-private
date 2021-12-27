@@ -45,6 +45,14 @@ export default {
       this.isLoading = false
     }
   },
+  // props: {
+  //   adsList: {
+  //     type: Array,
+  //     default() {
+  //       return []
+  //     }
+  //   }
+  // },
   data() {
     return {
       isLoading: true
@@ -63,6 +71,10 @@ export default {
   },
   methods: {
     async getNext() {
+      // console.log('---------')
+      // console.log(this.$store.getters['board/filter'])
+      // console.log(this.adList)
+      // console.log('GET NEXT')
       let query
       if (this.$store.getters['board/filter']) {
         query = {

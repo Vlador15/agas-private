@@ -247,6 +247,7 @@ export const actions = {
     await this.$api_board
       .get(`auserads/`)
       .then(res => {
+        console.log(res.data)
         commit('SET_AUTH_USER_ADLIST', res.data)
         commit('SET_LOADING', { name: 'ad', value: false }, { root: true })
       })

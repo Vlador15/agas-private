@@ -235,6 +235,29 @@ export default {
             )
           }
           this.loading = false
+          // const image = document.getElementById('imageInput').files[0]
+          // try {
+          //   if (image) {
+          //     const formData = new FormData()
+          //     formData.append('image', image, image.name)
+          //     const imgUrl = await this.$store.dispatch(
+          //       'board/UPLOAD_IMAGE',
+          //       formData
+          //     )
+          //     this.ad_data.purls = [imgUrl]
+          //   }
+          //   const editStatus = await this.$store.dispatch(
+          //     'board/EDIT_AD',
+          //     this.adData
+          //   )
+          //   if (editStatus === 'success') {
+          //     this.resetForm()
+          //     this.$refs.form.resetValidation()
+          //     this.snackbar = true
+          //     this.$router.push(
+          //       this.localePath(`/board/pets/${this.$route.params.id}`)
+          //     )
+          //   }
         } catch (e) {
           console.log(e)
         }
@@ -247,6 +270,8 @@ export default {
         const image = document.getElementById('imageInput').files[0]
         const formData = new FormData()
         formData.append('image', image, image.name)
+        console.log('ALL', formData.getAll('image'))
+        console.log('ONE', formData.get('image'))
         this.$store.dispatch('board/UPLOAD_IMAGE', formData)
       } else {
         this.$router.push({ name: `login___${this.$i18n.locale}` })

@@ -244,6 +244,8 @@ export default {
         const image = document.getElementById('imageInput').files[0]
         const formData = new FormData()
         formData.append('image', image, image.name)
+        console.log('ALL', formData.getAll('image'))
+        console.log('ONE', formData.get('image'))
         this.$store.dispatch('board/UPLOAD_IMAGE', formData)
       } else {
         this.$router.push({ name: `login___${this.$i18n.locale}` })

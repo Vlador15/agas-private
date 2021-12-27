@@ -731,9 +731,13 @@ export default {
     if (this.data) {
       this.userDetails = this.data
     }
+    // this.data.bio ? (this.userDetails.bio = this.data.bio) : ''
+    // this.data.website ? (this.userDetails.website = this.data.website) : ''
+    // this.data.location ? (this.userDetails.location = this.data.location) : ''
   },
   methods: {
     handleSubmit() {
+      console.log(this.userDetails)
       this.$store.dispatch('EDIT_USER_DETAILS', this.userDetails).then(res => {
         this.$emit('click')
         this.cancelEdit()
