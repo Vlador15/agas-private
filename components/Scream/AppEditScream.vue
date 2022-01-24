@@ -171,9 +171,8 @@ export default {
           this.scream.imgUrls[0] &&
           this.scream.imgUrls[0] !== 'no_img'
         ) {
-          document.getElementById(
-            `output-${this.scream.screamId}`
-          ).src = this.scream.imgUrls[0]
+          document.getElementById(`output-${this.scream.screamId}`).src =
+            this.scream.imgUrls[0]
         }
       }, 0)
     },

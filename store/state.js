@@ -4,6 +4,68 @@ export default () => ({
     form: false,
     ui: false
   },
+  user: {},
+  messages: [],
+  users: [],
+  // productsCatalogs: [
+  //   {
+  //     price: 250,
+  //     discountBool: false,
+  //     discount: '0%',
+  //     title: 'Подписка: lite',
+  //     time: '1 месяц',
+  //     description:
+  //       'Включает в себя 10 показов номеров телефона, 3 отзыва по желанию',
+  //     img: './assets/lamp.jpg',
+  //     id: 1
+  //   },
+  //   {
+  //     price: 750,
+  //     discountBool: false,
+  //     discount: '0%',
+  //     title: 'Подписка: pro',
+  //     time: '3 месяца',
+  //     description:
+  //       'Включает в себя 40 показов номеров телефона, 5 отзыва по желанию',
+  //     img: './assets/lamp.jpg',
+  //     id: 2
+  //   },
+  //   {
+  //     price: 25,
+  //     oldPrice: 250,
+  //     discountBool: true,
+  //     discount: '90%',
+  //     title: 'Скидка:Подписка: lite',
+  //     time: '1 месяц',
+  //     description:
+  //       'Включает в себя 10 показов номеров телефона, 3 отзыва по желанию',
+  //     img: './assets/lamp.jpg',
+  //     id: 3
+  //   },
+  //   {
+  //     price: 75,
+  //     oldPrice: 750,
+  //     discountBool: true,
+  //     discount: '90%',
+  //     title: 'Скидка:Подписка: pro',
+  //     time: '3 месяца',
+  //     description:
+  //       'Включает в себя 40 показов номеров телефона, 5 отзыва по желанию',
+  //     img: './assets/lamp.jpg',
+  //     id: 4
+  //   }
+  // ],
+  categoryList: [],
+  subjects: [],
+  feedbacks: {},
+  testSubject: {},
+  teacherIdData: {},
+  testSubjectFilter: {},
+  teacherFilter: {},
+  productsCatalogs: {},
+  profileStudent: {},
+  profileTeacher: {},
+  listTeachers: [],
   infinitiDataToLoad: true,
   error: null,
   path: '',

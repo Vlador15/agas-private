@@ -152,9 +152,11 @@ export default {
         this.userCredentials.handle === this.data.handle
       ) {
         const image = event.target.files[0]
-        const formData = new FormData()
-        formData.append('image', image, image.name)
-        this.$store.dispatch('UPLOAD_IMAGE', formData)
+        if (image) {
+          const formData = new FormData()
+          formData.append('image', image, image.name)
+          this.$store.dispatch('UPLOAD_IMAGE', formData)
+        }
       } else {
         this.$router.push({ name: `login___${this.$i18n.locale}` })
       }

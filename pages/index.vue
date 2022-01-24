@@ -60,6 +60,7 @@ export default {
     this.$store.commit('RESET_SCREAMS')
   },
   async mounted() {
+    // this.getProducts()
     if (!this.screamList.length) {
       await this.$store.dispatch('GET_LAST_SCREAMS', null)
     }
@@ -68,6 +69,9 @@ export default {
   methods: {
     async getNext() {
       return await this.$store.dispatch('GET_LAST_SCREAMS', this.lastScream)
+    },
+    async getProducts() {
+      await this.$store.dispatch('GET_PRODUCTS')
     }
   }
 }

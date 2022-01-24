@@ -42,7 +42,7 @@ export default {
   link: 'קישור',
   save: 'לשמור',
   cancel: 'לבטל',
-  editProfile: 'עידכון פרופיל',
+  editProfile: 'לַעֲרוֹך',
   changeAvatar: 'לשנות תמונת פרופיל',
   martialStatuses: [
     { key: 'martialSingle', text: 'רווק/ה' },

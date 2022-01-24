@@ -1,0 +1,34 @@
+[
+    {
+      "ru": "Россия",
+      "en": "Russian",
+      "cities": [
+        {
+          "ru": "Москва",
+          "en": "Moscow"
+        },
+        {
+          "ru": "Воронеж",
+          "en": "Voronezh"
+        },
+        {
+          "ru": "Санкт Петербург",
+          "en": "Saint Petersburg"
+        }
+      ]
+    },
+    {
+      "ru": "США",
+      "en": "USA",
+      "cities": [
+        {
+          "ru": "Нью-Йорк",
+          "en": "New York"
+        },
+        {
+          "ru": "Чикаго",
+          "en": "Chicago"
+        }
+      ]
+    }
+  ]

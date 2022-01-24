@@ -3,6 +3,7 @@
  * Written by vlad on 19/11/2020
  */
 
+import studentProfile from '~/assets/lang/ru/studentProfile'
 import auth from '~/assets/lang/ru/auth.js'
 import barting from '~/assets/lang/ru/barting.js'
 import board from '~/assets/lang/ru/board.js'
@@ -10,14 +11,27 @@ import breadcrumbs from '~/assets/lang/ru/breadcrumbs.js'
 import citiesIsr from '~/assets/lang/ru/cities_isr.js'
 import profile from '~/assets/lang/ru/profile.js'
 import scream from '~/assets/lang/ru/scream.js'
+import learningModule from '~/assets/lang/ru/learningModule'
+import teacherProfile from '~/assets/lang/ru/teacherProfile'
+import student from '~/assets/lang/ru/student'
+import chat from '~/assets/lang/ru/chat'
+import catalogs from '~/assets/lang/ru/catalogs.js'
 
 export default {
+  studentProfile,
+  student,
   auth,
+  chat,
+  catalogs,
   barting,
   board,
+  teacherProfile,
+  learningModule,
   breadcrumbs,
   profile,
   scream,
+  notFound: 'Не найдено',
+  pay: 'Купить',
   notifications: 'Уведомления',
   noNotifications: 'У вас нет новых уведомлений',
   hello: 'Привет',
@@ -32,7 +46,27 @@ export default {
     },
     { title: 'Профиль', icon: 'mdi-account-outline', link: '/ru/profile' },
     { title: 'Бартинг', icon: 'mdi-bitcoin', link: '/ru/barting' },
-    { title: 'Доска объявлений', icon: 'mdi-clipboard-text', link: '/ru/board' }
+    {
+      title: 'Доска объявлений',
+      icon: 'mdi-clipboard-text',
+      link: '/ru/board'
+    },
+    { title: 'Учебный модуль', icon: 'mdi-book', link: '/ru/learningModule' },
+    { title: 'Подписки', icon: 'mdi-bank', link: '/ru/catalogs/catalogs' },
+    { title: 'Сообщения', icon: 'mdi-chat', link: '/ru/messager/dialogs' }
+  ],
+  learningModule_categories: [
+    {
+      name: 'Кабинет учащегося',
+      routing: '/ru/learningModule/student',
+      key: 'student'
+    },
+    {
+      name: 'Кабинет преподавателя',
+      routing: '/ru/learningModule/teacher',
+      key: 'teacher'
+    }
+    // { name: 'База знаний', routing: '/ru/learningModule/base', key: 'base' }
   ],
   main_categories: [
     { name: 'Животные', routing: '/ru/board/pets', key: 'pets' },

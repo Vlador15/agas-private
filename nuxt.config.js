@@ -1,4 +1,5 @@
 export default {
+  ssr: false,
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
     titleTemplate: '%s - AGAS',
@@ -173,7 +174,13 @@ export default {
   },
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-  plugins: ['@/plugins/day.js', '@/plugins/api.js', '@/plugins/api_board.js'],
+  plugins: [
+    '@/plugins/day.js',
+    '@/plugins/api.js',
+    '@/plugins/api_board.js',
+    '@/plugins/apiLearning.js',
+    '@/plugins/socket.client.js'
+  ],
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
   axios: {
@@ -183,6 +190,10 @@ export default {
   },
 
   proxy: {
+    '/apiLearning/': {
+      target: `${process.env.LEARNING_API}`,
+      changeOrigin: true
+    },
     '/api/': { target: `${process.env.API}`, changeOrigin: true },
     '/api_board/': {
       target: `${process.env.BOARD_API}`,

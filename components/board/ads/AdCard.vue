@@ -208,7 +208,7 @@ export default {
 .post-img {
   width: 100%;
   object-fit: cover;
-  max-height: 250px;
+  // max-height: 250px;
   object-position: top;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;

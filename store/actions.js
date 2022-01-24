@@ -4,6 +4,257 @@ import axios from 'axios'
 // import Api from '../plugins/api'
 
 export default {
+  async DELETE_TEST_SUBJECT({ commit }, id) {
+    const token = localStorage.getItem('auth._token.local')
+
+    await this.$apiLearning
+      .delete(`test-subject/${id}`, {
+        headers: {
+          Authorization: `${token}`
+        }
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  },
+  async GET_SUBJECTS({ commit }, object) {
+    await this.$apiLearning
+      .get(`list/subjects?ln=${object.ln}&category=${object.name}`)
+      .then(res => {
+        const subjects = res.data.data.map(x => x.name)
+        commit('SET_SUBJECTS', subjects)
+      })
+  },
+  async GET_CATEGORY({ commit }, lang) {
+    await this.$apiLearning.get(`list/category?ln=${lang}`).then(res => {
+      commit('SET_CATEGORY', res.data.categories)
+    })
+  },
+  async POST_FEEDBACK({ commit }, data) {
+    const token = localStorage.getItem('auth._token.local')
+
+    await this.$apiLearning
+      .post('feedback', data, {
+        headers: {
+          Authorization: `${token}`
+        }
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  },
+  async GET_TEACHER_ID({ commit }, uid) {
+    // console.log(uid)
+    await this.$apiLearning.get(`teacher/${uid}`).then(res => {
+      commit('SET_TEACHER_ID_DATA', res.data.data)
+    })
+  },
+  async GET_TEACHERS({ commit }) {
+    await this.$apiLearning.get(`teachers`).then(res => {
+      commit('SET_TEACHERS', res.data.data)
+    })
+  },
+  async GET_PRODUCTS({ commit }) {
+    await this.$apiLearning.get(`products`).then(res => {
+      commit('SET_PRODUCTS', res.data.data)
+    })
+  },
+  async POST_TEST_SUBJECT_FILTER({ commit }, formData) {
+    const token = localStorage.getItem('auth._token.local')
+
+    await this.$apiLearning
+      .post('test-subject-filter', formData, {
+        headers: {
+          Authorization: `${token}`
+        }
+      })
+      .then(res => {
+        commit('SET_TEST_SUBJECT_FILTER', res.data.data)
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  },
+  async POST_TEACHER_FILTER({ commit }, formData) {
+    const token = localStorage.getItem('auth._token.local')
+
+    await this.$apiLearning
+      .post('teacher-filter', formData, {
+        headers: {
+          Authorization: `${token}`
+        }
+      })
+      .then(res => {
+        commit('SET_TEACHER_FILTER', res.data.data)
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  },
+  async POST_TEST_SUBJECT({ commit }, formData) {
+    const token = localStorage.getItem('auth._token.local')
+
+    await this.$apiLearning
+      .post('test-subject', formData, {
+        headers: {
+          Authorization: `${token}`
+        }
+      })
+      .then(res => {
+        commit('SET_TEST_SUBJECT', res.data.data)
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  },
+  async GET_TEST_SUBJECT({ commit }) {
+    const token = localStorage.getItem('auth._token.local')
+    await this.$apiLearning
+      .get(`test-subject`, {
+        headers: {
+          Authorization: `${token}`
+        }
+      })
+      // commit('SET_BARTS_HISTORY', bartsHistory.data)
+      .then(res => {
+        commit('SET_TEST_SUBJECT', res.data.data)
+        // commit('SET_LOADING', { name: 'user', value: false })
+      })
+  },
+  async PAYMENT_SUCCESS({ commit }, formData) {
+    const token = localStorage.getItem('auth._token.local')
+
+    await this.$apiLearning
+      .post('payment/success', formData, {
+        headers: {
+          Authorization: `${token}`
+        }
+      })
+      .then(res => {})
+      .catch(error => {
+        console.log(error)
+      })
+  },
+  async GET_FORM_STUDENT({ commit }) {
+    const token = localStorage.getItem('auth._token.local')
+
+    try {
+      await this.$apiLearning
+        .get(`student`, {
+          headers: {
+            Authorization: `${token}`
+          }
+        })
+        // commit('SET_BARTS_HISTORY', bartsHistory.data)
+        .then(res => {
+          commit('SET_PROFILE_STUDENT', res.data.data)
+          // commit('SET_LOADING', { name: 'user', value: false })
+        })
+    } catch (err) {
+      if (err.response.status === 404) {
+        commit('SET_PROFILE_STUDENT', null)
+      }
+    }
+  },
+  async AUTH_FORM_STUDENT({ commit }, formData) {
+    const token = localStorage.getItem('auth._token.local')
+
+    await this.$apiLearning
+      .post('student', formData, {
+        headers: {
+          Authorization: `${token}`
+        }
+      })
+      .then(res => {
+        commit('SET_PROFILE_STUDENT', res.data.data)
+        commit('SET_LOADING', { name: 'form', value: false })
+      })
+      .catch(error => {
+        console.log(error)
+        commit('SET_LOADING', { name: 'form', value: false })
+      })
+  },
+  async PUT_STUDENT({ commit }, formData) {
+    const token = localStorage.getItem('auth._token.local')
+    // const data = { data: formData }
+    await this.$apiLearning
+      .put(`student`, formData, {
+        headers: {
+          Authorization: `${token}`
+        }
+      })
+      .then(res => {
+        commit('SET_PROFILE_STUDENT', res.data.data)
+        console.log(res)
+        // commit('SET_PROFILE_TEACHER', res.data.data)
+      })
+  },
+  async PUT_TEACHER({ commit }, formData) {
+    const token = localStorage.getItem('auth._token.local')
+    // const data = { data: formData }
+    await this.$apiLearning
+      .put(`teacher`, formData, {
+        headers: {
+          Authorization: `${token}`
+        }
+      })
+      .then(res => {
+        commit('SET_PROFILE_TEACHER', res.data.data)
+        // commit('SET_PROFILE_TEACHER', res.data.data)
+      })
+  },
+  async GET_FEEDBACKS({ commit }) {
+    const token = localStorage.getItem('auth._token.local')
+
+    await this.$apiLearning
+      .get(`feedbacks`, {
+        headers: {
+          Authorization: `${token}`
+        }
+      })
+      .then(res => {
+        commit('SET_FEEDBACKS', res.data.data)
+      })
+  },
+  async AUTH_FORM_TEACHER({ commit }, formData) {
+    const token = localStorage.getItem('auth._token.local')
+
+    await this.$apiLearning
+      .post('teacher', formData, {
+        headers: {
+          Authorization: `${token}`
+        }
+      })
+      .then(res => {
+        commit('SET_PROFILE_TEACHER', res.data.data)
+        commit('SET_LOADING', { name: 'form', value: false })
+      })
+      .catch(error => {
+        console.log(error)
+        commit('SET_LOADING', { name: 'form', value: false })
+      })
+  },
+  async GET_FORM_TEACHER({ commit }) {
+    const token = localStorage.getItem('auth._token.local')
+
+    try {
+      await this.$apiLearning
+        .get(`teacher`, {
+          headers: {
+            Authorization: `${token}`
+          }
+        })
+        // commit('SET_BARTS_HISTORY', bartsHistory.data)
+        .then(res => {
+          commit('SET_PROFILE_TEACHER', res.data.data)
+          // commit('SET_LOADING', { name: 'user', value: false })
+        })
+    } catch (err) {
+      if (err.response.status === 404) {
+        commit('SET_PROFILE_TEACHER', null)
+      }
+    }
+  },
   // GET SCREAMS IN STATE
   async GET_SCREAMS({ commit, dispatch }) {
     const resolve = await this.$api.get('screams')
@@ -64,6 +315,7 @@ export default {
         commit('SET_LOADING', { name: 'form', value: false })
       })
   },
+
   async SIGN_UP({ dispatch, commit }, formNewUser) {
     commit('SET_LOADING', { name: 'form', value: true })
 

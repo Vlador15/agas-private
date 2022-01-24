@@ -66,7 +66,7 @@ export default {
     return {
       mobSideBarModel: false,
       deskSideBarModel: true,
-      color: 'transparent',
+      color: 'white',
       temporary: false,
       permanent: true,
       items: [

@@ -1,6 +1,56 @@
 import Vue from 'vue'
 
 export default {
+  setUser(state, user) {
+    state.user = user
+  },
+  SET_SUBJECTS(state, sub) {
+    state.subjects = sub
+  },
+  SET_CATEGORY(state, category) {
+    state.categoryList = category
+  },
+  SET_TEACHER_ID_DATA(state, teacher) {
+    state.teacherIdData = teacher
+  },
+  SET_TEST_SUBJECT_FILTER(state, filterTestSubject) {
+    state.testSubjectFilter = filterTestSubject
+  },
+  SET_TEACHER_FILTER(state, filter) {
+    state.teacherFilter = filter
+  },
+  SET_TEST_SUBJECT(state, subject) {
+    state.testSubject = subject
+  },
+  SET_TEACHERS(state, teachers) {
+    state.listTeachers = teachers
+  },
+  SOCKET_newMessage(state, msg) {
+    state.messages = [...state.messages, msg]
+  },
+  SOCKET_updateUsers(state, users) {
+    state.users = users
+  },
+  clearData(state) {
+    state.user = {}
+    state.messages = []
+    state.users = []
+  },
+  setTypingStatus(state, status) {
+    state.user.typingStatus = status
+  },
+  SET_PROFILE_STUDENT: (state, profile) => {
+    state.profileStudent = profile
+  },
+  SET_FEEDBACKS: (state, feedbacks) => {
+    state.feedbacks = feedbacks
+  },
+  SET_PRODUCTS: (state, products) => {
+    state.productsCatalogs = products
+  },
+  SET_PROFILE_TEACHER: (state, profile) => {
+    state.profileTeacher = profile
+  },
   // USER LOGIN/REGISTRATION/AUTH
   SET_AUTHORIZATION: (state, token) => {
     state.token = token
@@ -162,6 +212,9 @@ export default {
   // PROFILE
   PROFILE_EDITABLE(state) {
     state.profileEditable = true
+  },
+  PROFILE_EDITABLE_OFF(state) {
+    state.profileEditable = false
   },
 
   // BARTING

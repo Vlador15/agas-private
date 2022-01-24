@@ -2,6 +2,7 @@
  *
  * Written by vlad on 19/11/2020
  */
+import studentProfile from '~/assets/lang/he/studentProfile'
 import auth from '~/assets/lang/he/auth.js'
 import barting from '~/assets/lang/he/barting.js'
 import board from '~/assets/lang/he/board.js'
@@ -9,14 +10,25 @@ import breadcrumbs from '~/assets/lang/he/breadcrumbs.js'
 import citiesIsr from '~/assets/lang/he/cities_isr.js'
 import profile from '~/assets/lang/he/profile.js'
 import scream from '~/assets/lang/he/scream.js'
+import learningModule from '~/assets/lang/he/learningModule'
+import teacherProfile from '~/assets/lang/he/teacherProfile'
+import chat from '~/assets/lang/he/chat'
+import catalogs from '~/assets/lang/he/catalogs'
 
 export default {
+  learningModule,
+  teacherProfile,
+  studentProfile,
   auth,
   barting,
   board,
+  chat,
+  catalogs,
   breadcrumbs,
   profile,
   scream,
+  notFound: 'לא נמצא',
+  pay: 'לקנות',
   notifications: 'התראות',
   noNotifications: 'אין לך התראות חדשות',
   hello: 'שלום',
@@ -30,7 +42,23 @@ export default {
     },
     { title: 'פרופיל', icon: 'mdi-account-outline', link: '/profile' },
     { title: 'בארטינג', icon: 'mdi-bitcoin', link: '/barting' },
-    { title: 'לוח מודעות', icon: 'mdi-clipboard-text', link: '/board' }
+    { title: 'לוח מודעות', icon: 'mdi-clipboard-text', link: '/board' },
+    { title: 'לימודים', icon: 'mdi-book', link: '/learningModule' },
+    { title: 'מנויים', icon: 'mdi-bank', link: '/catalogs/catalogs' },
+    { title: 'הודעות', icon: 'mdi-chat', link: '/messager/dialogs' }
+  ],
+  learningModule_categories: [
+    {
+      name: 'פריפיל סטודנט',
+      routing: '/learningModule/student',
+      key: 'student'
+    },
+    {
+      name: 'פרופיל מורה',
+      routing: '/learningModule/teacher',
+      key: 'teacher'
+    }
+    // { name: 'ספרייה', routing: '/learningModule/base', key: 'base' }
   ],
   main_categories: [
     { name: 'חיות מחמד', routing: '/board/pets', key: 'pets' },

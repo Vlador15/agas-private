@@ -42,7 +42,7 @@ export default {
   link: 'ссылка',
   save: 'Cохранить',
   cancel: 'отменить',
-  editProfile: 'Редактировать профиль',
+  editProfile: 'Редактировать',
   changeAvatar: 'Изменить аватар',
   martialStatuses: [
     { key: 'martialSingle', text: 'холост/не замужем' },

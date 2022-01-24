@@ -1,6 +1,21 @@
 // import { state } from './board'
 
 export default {
+  typingUsers: ({ users, user }) =>
+    users.filter(({ typingStatus, id }) => typingStatus && user.id !== id),
+  typingStatus: ({ user }) => user.typingStatus,
+  getSubjects: state => state.subjects,
+  getCategoryList: state => state.categoryList,
+  getTeacherFilter: state => state.teacherFilter,
+  getTestSubjectFilter: state => state.testSubjectFilter,
+  getTestSubject: state => state.testSubject,
+  getTeacherIdData: state => state.teacherIdData,
+  getTeachers: state => state.listTeachers,
+  getProducts: state => state.productsCatalogs,
+  feedbacksGet: state => state.feedbacks,
+  productsGet: state => state.products,
+  profileTeacherGet: state => state.profileTeacher,
+  profileStudentGet: state => state.profileStudent,
   isAuthenticated: state => !!state.token,
   errors: state => state.error,
   infinitiDataToLoad: state => state.infinitiDataToLoad,
