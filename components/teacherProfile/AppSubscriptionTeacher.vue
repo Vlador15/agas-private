@@ -21,10 +21,10 @@
         {{ $t('teacherProfile.viewPhone') }}
         {{ data.subscription.viewsPhone }}
       </p>
-      <p class="ma-2">
+      <!-- <p class="ma-2">
         {{ $t('teacherProfile.freeReviews') }}
         <v-btn>{{ data.subscription.feedbacks }} </v-btn>
-      </p>
+      </p> -->
     </v-row>
   </div>
 </template>

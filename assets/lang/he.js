@@ -28,7 +28,7 @@ export default {
   profile,
   scream,
   notFound: 'לא נמצא',
-  pay: 'לקנות',
+  pay: 'רכישה',
   notifications: 'התראות',
   noNotifications: 'אין לך התראות חדשות',
   hello: 'שלום',
@@ -42,7 +42,7 @@ export default {
     },
     { title: 'פרופיל', icon: 'mdi-account-outline', link: '/profile' },
     { title: 'בארטינג', icon: 'mdi-bitcoin', link: '/barting' },
-    { title: 'לוח מודעות', icon: 'mdi-clipboard-text', link: '/board' },
+    // { title: 'לוח מודעות', icon: 'mdi-clipboard-text', link: '/board' },
     { title: 'לימודים', icon: 'mdi-book', link: '/learningModule' },
     { title: 'מנויים', icon: 'mdi-bank', link: '/catalogs/catalogs' },
     { title: 'הודעות', icon: 'mdi-chat', link: '/messager/dialogs' }

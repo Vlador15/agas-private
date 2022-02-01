@@ -53,7 +53,7 @@ export default {
   phoneRules: 'מילוי טלפון',
   rulesPattern: 'הזנה לא חוקית',
   subscription: 'מנוי',
-  buy: 'לקנות',
+  buy: 'רכישה',
   subscriptionBuy: 'המנוי נרכש בהצלחה',
   subscriptionDataEnd: 'תוקף המנוי:',
   viewPhone: 'להציג מספר טלפון:',

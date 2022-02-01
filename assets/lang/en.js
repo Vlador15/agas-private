@@ -33,7 +33,7 @@ export default {
     },
     { title: 'Profile', icon: 'mdi-account-outline', link: '/en/profile' },
     { title: 'Barting', icon: 'mdi-bitcoin', link: '/en/barting' },
-    { title: 'Board', icon: 'mdi-clipboard-text', link: '/en/board' },
+    // { title: 'Board', icon: 'mdi-clipboard-text', link: '/en/board' },
     { title: 'Subscriptions', icon: 'mdi-bank', link: '/en/catalogs/catalogs' }
   ],
   main_categories: [

@@ -221,7 +221,7 @@ export default {
       border-radius: 0 10px 10px 10px;
       font-size: 18px;
       max-width: 90%;
-      word-break: break-all;
+      word-break: break-word;
     }
   }
   &__right {
@@ -236,7 +236,7 @@ export default {
       border-radius: 10px 10px 0 10px;
       font-size: 18px;
       max-width: 90%;
-      word-break: break-all;
+      word-break: break-word;
     }
   }
 }

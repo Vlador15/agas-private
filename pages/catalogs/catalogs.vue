@@ -6,23 +6,25 @@
 
       <!-- <payPal :data="product"> </payPal> -->
 
-      <v-card height="400" class="mx-auto">
+      <v-card height="430" class="mx-auto">
         <v-toolbar v-if="product.discountBool == false" color="#5a88b0" dark
           ><h2>
             {{ product.title }}
           </h2>
         </v-toolbar>
         <v-toolbar v-else color="#2fde55" dark>
-          <h2>{{ product.title }}</h2>
-          <p v-if="product.discountBool" class="discount">
-            -{{ product.discount }}%
-          </p>
+          <span class="rowHeader">
+            <h2>{{ product.title }}</h2>
+            <p v-if="product.discountBool" class="discount">
+              {{ product.discount }}%
+            </p>
+          </span>
         </v-toolbar>
 
         <v-card-text>
           <h1 v-if="!product.discountBool" class="card_text">
             <p style="display: inline-block">{{ product.price }}</p>
-            <p style="display: inline-block">{{ product.currency }}</p>
+            <p style="display: inline-block">{{ product.currency_text }}</p>
           </h1>
           <h1 v-else class="card_text">
             <p>
@@ -32,22 +34,28 @@
                     product.price - (product.price / 100) * product.discount
                   )
                 }}
-                {{ product.currency }}
+                {{ product.currency_text }}
               </span>
 
               <span class="text">
                 <span class="oldPrice">
                   {{ product.price }}
+                  {{ product.currency_text }}
                 </span>
-                {{ product.currency }}
               </span>
             </p>
           </h1>
 
-          <h2 style="padding: 1.5rem 4.5rem">{{ product.time }}</h2>
+          <h2 style="padding: 0.5rem 4.5rem">{{ product.time }}</h2>
 
           <h4 class="description">
-            {{ product.description }}
+            <p
+              v-for="(item, j) in product.description.split(',')"
+              :key="j"
+              class="description__row"
+            >
+              <i>&#10003;</i> {{ item }}
+            </p>
           </h4>
         </v-card-text>
         <v-card-actions class="justify-center">
@@ -103,6 +111,7 @@ export default {
       this.products = this.getProducts.map(item => {
         return {
           currency: item[ln].currency,
+          currency_text: item[ln].currency_text,
           price: item[ln].price,
           title: item[ln].title,
           time: item[ln].time,
@@ -160,13 +169,28 @@ export default {
 }
 .discount {
   margin: 0;
-  position: absolute;
-  right: 0%;
+  // position: absolute;
+  // right: 0%;
   height: 100%;
   width: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
   background: #604ed3;
+}
+
+.rowHeader {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+}
+
+.description__row {
+  border-top: 1px solid #ccc;
+  margin-bottom: 0;
+  padding: 0.2rem 0;
+  font-size: 16px;
 }
 </style>

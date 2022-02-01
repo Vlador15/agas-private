@@ -3,7 +3,16 @@ import VueSocketIO from 'vue-socket.io'
 import io from 'socket.io-client'
 import store from '../store/state'
 
-const socketInstance = io(process.env.LEARNING_API, {
+// const isProxy = process.env.PROXY.match(/[^/{1}]*$/gm)[0]
+const proxy = process.env.PROXY
+const path = proxy ? `${proxy}/socket.io/` : `/socket.io`
+
+const url = proxy
+  ? process.env.LEARNING_API.replace(`${proxy}`, '')
+  : `${process.env.LEARNING_API}`
+
+const socketInstance = io(url, {
+  path,
   query: {},
   rejectUnauthorized: false,
   reconnection: true,
@@ -11,6 +20,7 @@ const socketInstance = io(process.env.LEARNING_API, {
   reconnectionDelayMax: 5000,
   reconnectionAttempts: 15
 })
+console.log(socketInstance)
 // { store } store
 export default () => {
   Vue.use(

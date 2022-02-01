@@ -1,16 +1,18 @@
 <template>
   <v-row v-if="!isLoading" justify="center" style="margin-top: 10px">
-    <v-card v-if="!error" class="mx-auto">
+    <v-card v-if="!error" class="mx-auto" width="400">
       <v-toolbar v-if="product.discountBool == false" color="#5a88b0" dark
         ><h2>
           {{ product.title }}
         </h2>
       </v-toolbar>
       <v-toolbar v-else color="#2fde55" dark>
-        <h2>{{ product.title }}</h2>
-        <p v-if="product.discountBool" class="discount">
-          -{{ product.discount }}%
-        </p>
+        <span class="rowHeader">
+          <h2>{{ product.title }}</h2>
+          <p v-if="product.discountBool" class="discount">
+            {{ product.discount }}%
+          </p>
+        </span>
       </v-toolbar>
 
       <v-card-text>
@@ -18,7 +20,7 @@
           <p class="oldPrice">
             <!-- Старая цена:  -->
             {{ product.price }}
-            {{ product.currency }}
+            {{ product.currency_text }}
           </p>
           <p style="display: inline-block" class="price">
             <!-- Новая цена: -->
@@ -27,7 +29,7 @@
                 product.price - (product.price / 100) * product.discount
               )
             }}
-            {{ product.currency }}
+            {{ product.currency_text }}
           </p>
         </h1>
 
@@ -35,13 +37,19 @@
           <p>
             <!-- Цена:  -->
             {{ product.price }}
-            {{ product.currency }}
+            {{ product.currency_text }}
           </p>
         </h1>
         <h2 style="padding: 1rem 0">{{ product.time }}</h2>
 
         <h4 class="description">
-          {{ product.description }}
+          <p
+            v-for="(item, j) in product.description.split(',')"
+            :key="j"
+            class="description__row"
+          >
+            <i>&#10003;</i> {{ item }}
+          </p>
         </h4>
       </v-card-text>
       <div ref="paypal" class="btn_pay"></div>
@@ -187,13 +195,27 @@ export default {
 }
 .discount {
   margin: 0;
-  position: absolute;
-  right: 0%;
+  // position: absolute;
+  // right: 0%;
   height: 100%;
   width: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
   background: #604ed3;
+}
+.rowHeader {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+}
+
+.description__row {
+  border-top: 1px solid #ccc;
+  margin-bottom: 0;
+  padding: 0.2rem 0;
+  font-size: 16px;
 }
 </style>
