@@ -86,6 +86,9 @@
                     {{ $t('profile.editProfile') }}
                   </v-btn>
                 </v-row>
+                <v-row class="center mt-8">
+                  <p style="font-size: 12px">id: {{ dataStudent.uid }}</p>
+                </v-row>
                 <!-- <AppEditProfile :data="data"></AppEditProfile> -->
                 <!---------------END EDIT PROFILE MODAL ------------->
               </div>

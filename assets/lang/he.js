@@ -14,12 +14,14 @@ import learningModule from '~/assets/lang/he/learningModule'
 import teacherProfile from '~/assets/lang/he/teacherProfile'
 import chat from '~/assets/lang/he/chat'
 import catalogs from '~/assets/lang/he/catalogs'
+import moder from '~/assets/lang/he/moder'
 
 export default {
   learningModule,
   teacherProfile,
   studentProfile,
   auth,
+  moder,
   barting,
   board,
   chat,
@@ -81,6 +83,18 @@ export default {
     { name: 'אזוטריקה', routing: 'esoterics', key: 'esoterics' },
     { name: 'אספנות', routing: 'collecting', key: 'collecting' },
     { name: 'עסק', routing: 'business', key: 'business' }
+  ],
+  moder_categories: [
+    {
+      name: 'ספרי עיון',
+      routing: '/learningModule/moderator/referenceBooks',
+      key: 'referenceBooks'
+    },
+    {
+      name: 'קָטָלוֹג',
+      routing: '/learningModule/moderator/catalog',
+      key: 'catalog'
+    }
   ],
   filters: 'סנן תוצעות',
   deal_type: 'סוג העסקה',

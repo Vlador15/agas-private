@@ -9,7 +9,7 @@
 export default function ({ $axios }, inject) {
   // Create a custom axios instance
   const api = $axios.create({
-    baseURL: `${process.env.LEARNING_API}/api/`
+    baseURL: `${process.env.LEARNING_API}/apiLearning/`
   })
   inject('apiLearning', api)
 }

@@ -16,6 +16,7 @@ import teacherProfile from '~/assets/lang/ru/teacherProfile'
 import student from '~/assets/lang/ru/student'
 import chat from '~/assets/lang/ru/chat'
 import catalogs from '~/assets/lang/ru/catalogs.js'
+import moder from '~/assets/lang/ru/moder'
 
 export default {
   studentProfile,
@@ -24,6 +25,7 @@ export default {
   chat,
   catalogs,
   barting,
+  moder,
   board,
   teacherProfile,
   learningModule,
@@ -66,7 +68,20 @@ export default {
       routing: '/ru/learningModule/teacher',
       key: 'teacher'
     }
+
     // { name: 'База знаний', routing: '/ru/learningModule/base', key: 'base' }
+  ],
+  moder_categories: [
+    {
+      name: 'Справочники',
+      routing: '/ru/learningModule/moderator/referenceBooks',
+      key: 'referenceBooks'
+    },
+    {
+      name: 'Каталог товаров',
+      routing: '/ru/learningModule/moderator/catalog',
+      key: 'catalog'
+    }
   ],
   main_categories: [
     { name: 'Животные', routing: '/ru/board/pets', key: 'pets' },

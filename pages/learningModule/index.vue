@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container v-if="!isLoading">
     <div class="ag-board-main-tabs">
       <v-btn
         v-for="link in $t('learningModule_categories')"
@@ -8,13 +8,21 @@
         color="primary"
         @click="routerValid(link.routing, link.key)"
       >
-        <!-- @click="$router.push(link.routing)" -->
-        <!-- routerValid(link.routing,link.name) -->
-
         {{ link.name }}
+      </v-btn>
+      <v-btn v-if="getValideModer" x-large color="primary" @click="nextModer()">
+        {{ moder.name }}
       </v-btn>
     </div>
   </v-container>
+  <div v-else>
+    <v-progress-circular
+      style="margin-left: 45%; margin-top: 20%"
+      :size="120"
+      color="primary"
+      indeterminate
+    ></v-progress-circular>
+  </div>
 </template>
 
 <script>
@@ -25,11 +33,16 @@ export default {
   data() {
     return {
       tab: null,
-      isLoading: true
+      isLoading: true,
+      moder: {
+        name: this.$t('moder.Cabinetmoder'),
+        routing: '/ru/learningModule/moderator',
+        key: 'moderator'
+      }
     }
   },
   computed: {
-    ...mapGetters(['profileTeacherGet', 'profileStudentGet']),
+    ...mapGetters(['profileTeacherGet', 'profileStudentGet', 'getValideModer']),
     isAuthenticated() {
       return this.$store.getters.isAuthenticated
     }
@@ -37,14 +50,24 @@ export default {
   async mounted() {
     await this.getTeacher()
     await this.getStudent()
+    await this.validateModer()
+    this.isLoading = false
   },
 
   methods: {
+    nextModer() {
+      this.$router.push({
+        name: `learningModule-moderator___${this.$i18n.locale}`
+      })
+    },
     async getTeacher() {
       await this.$store.dispatch('GET_FORM_TEACHER')
     },
     async getStudent() {
       await this.$store.dispatch('GET_FORM_STUDENT')
+    },
+    async validateModer() {
+      await this.$store.dispatch('VALIDATE_MODER')
     },
     routerValid(link, key) {
       if (key === 'teacher') {

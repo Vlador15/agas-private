@@ -7,12 +7,12 @@
       <!-- <payPal :data="product"> </payPal> -->
 
       <v-card height="430" class="mx-auto">
-        <v-toolbar v-if="product.discountBool == false" color="#5a88b0" dark
+        <v-toolbar v-if="product.discountBool == false" color="#00825C" dark
           ><h2>
             {{ product.title }}
           </h2>
         </v-toolbar>
-        <v-toolbar v-else color="#2fde55" dark>
+        <v-toolbar v-else color="#DC6D01" dark>
           <span class="rowHeader">
             <h2>{{ product.title }}</h2>
             <p v-if="product.discountBool" class="discount">
@@ -148,12 +148,12 @@ export default {
 }
 .buy {
   font-size: 20px;
-  padding: 1.2rem 2rem;
-  background: linear-gradient(#a247d1, #3453d5);
+  padding: 0.5rem 4.5rem;
+  background: #002a38;
   color: #fff;
   border-radius: 5px;
   &:hover {
-    background: linear-gradient(#3453d5, #a247d1);
+    background: #0d4456;
   }
 }
 .oldPrice {
@@ -169,14 +169,13 @@ export default {
 }
 .discount {
   margin: 0;
-  // position: absolute;
-  // right: 0%;
   height: 100%;
   width: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #604ed3;
+  background: #002a38;
+  border-radius: 10px 0 10px 0;
 }
 
 .rowHeader {

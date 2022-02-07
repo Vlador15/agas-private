@@ -9,6 +9,7 @@
     clipped
     floating
     :color="color"
+    style="z-index: 200"
   >
     <v-list nav dense shaped class="pl-0">
       <div v-for="item in $t('main_nav_links')" :key="item.title">

@@ -1,6 +1,27 @@
 import Vue from 'vue'
 
 export default {
+  ADD_DATA_PRODUCTS_MODER(state, data) {
+    state.productsModer.push(data)
+  },
+  SET_DATA_PRODUCTS_MODER(state, data) {
+    state.productsModer = data
+  },
+  ADD_LIST_MODERS(state, data) {
+    state.listModers.push(data)
+  },
+  SET_LIST_MODERS(state, data) {
+    state.listModers = data
+  },
+  ADD_IN_LIST_DATA(state, data) {
+    state.listData.push(data)
+  },
+  SET_LIST_DATA(state, data) {
+    state.listData = data
+  },
+  SET_VALIDE_MODERATOR(state, moder) {
+    state.valideModer = moder
+  },
   setUser(state, user) {
     state.user = user
   },

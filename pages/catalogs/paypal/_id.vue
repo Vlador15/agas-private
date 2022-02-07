@@ -1,12 +1,16 @@
 <template>
-  <v-row v-if="!isLoading" justify="center" style="margin-top: 10px">
+  <v-row
+    v-if="!isLoading"
+    justify="center"
+    style="margin-top: 10px; padding: 0 0.5rem"
+  >
     <v-card v-if="!error" class="mx-auto" width="400">
-      <v-toolbar v-if="product.discountBool == false" color="#5a88b0" dark
+      <v-toolbar v-if="product.discountBool == false" color="#00825C" dark
         ><h2>
           {{ product.title }}
         </h2>
       </v-toolbar>
-      <v-toolbar v-else color="#2fde55" dark>
+      <v-toolbar v-else color="#DC6D01" dark>
         <span class="rowHeader">
           <h2>{{ product.title }}</h2>
           <p v-if="product.discountBool" class="discount">
@@ -195,14 +199,13 @@ export default {
 }
 .discount {
   margin: 0;
-  // position: absolute;
-  // right: 0%;
   height: 100%;
   width: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #604ed3;
+  background: #002a38;
+  border-radius: 10px 0 10px 0;
 }
 .rowHeader {
   display: flex;
