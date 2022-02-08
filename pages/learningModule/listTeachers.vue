@@ -149,7 +149,7 @@
         </v-card>
       </v-col>
 
-      <v-col cols="12" md="10" class="pa-4">
+      <v-col cols="12" md="12" class="pa-4">
         <div v-for="(sub, i) in dataListTeachers" :key="i">
           <cardTeacher :dataCard="sub"> </cardTeacher>
         </div>

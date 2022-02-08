@@ -20,7 +20,7 @@ const socketInstance = io(process.env.LEARNING_API, {
   reconnectionDelayMax: 5000,
   reconnectionAttempts: 15
 })
-console.log(socketInstance)
+
 // { store } store
 export default () => {
   Vue.use(

@@ -477,7 +477,7 @@ export default {
       cityLessonItems: [],
       countrySecond: '',
       cities: [],
-      CurrencyItem: ['USD', 'RUB', 'EUR'],
+      CurrencyItem: ['$', '₽', '₴', '₪'],
       educationItems: [
         this.$t('teacherProfile.educationitemsHigher'),
         this.$t('teacherProfile.educationitemsInitialGeneral'),

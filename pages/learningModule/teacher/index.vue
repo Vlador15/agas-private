@@ -151,7 +151,15 @@
                   </v-col>
                 </v-row>
               </div>
-
+              <!-- 
+              <v-row>
+                <v-col cols="6" md="6" class="ma-2"> </v-col>
+                <v-col cols="4" md="4">
+                  <v-btn class="primary" @click="addCity">{{
+                    $t('learningModule.addCity')
+                  }}</v-btn>
+                </v-col>
+              </v-row> -->
               <div cols="6" md="6" class="ma-2">
                 <v-btn class="primary" @click="addCity">{{
                   $t('learningModule.addCity')
@@ -205,7 +213,7 @@
           </v-row>
 
           <v-row>
-            <v-col cols="6" md="8" class="pa-5 my-n4 ms-5">
+            <v-col cols="6" md="8" class="pa-5 mt-2 ms-5">
               <v-textarea
                 v-model="formTeacher.placeOfWork"
                 clearable
@@ -431,17 +439,15 @@ export default {
       ],
 
       selectCurrency: null,
-      CurrencyItem: ['USD', 'RUB', 'EUR'],
+      CurrencyItem: ['$', '₽', '₴', '₪'],
       selected: [],
       educationItems: [
         this.$t('learningModule.educationitemsHigher'),
-        this.$t('learningModule.educationitemsInitialGeneral'),
-
-        this.$t('learningModule.educationitemsLowerSecondary'),
+        this.$t('learningModule.educationitemsSecondaryVocational'),
 
         this.$t('learningModule.educationitemsCompleteSecondary'),
-
-        this.$t('learningModule.educationitemsSecondaryVocational')
+        this.$t('learningModule.educationitemsLowerSecondary'),
+        this.$t('learningModule.educationitemsInitialGeneral')
       ],
       subRemotely: this.$t('learningModule.subRemotely'),
       subHomeTeacher: this.$t('learningModule.subHomeTeacher'),

@@ -42,12 +42,13 @@
             <p class="text-overline mb-4">{{ $t('studentProfile.subName') }}</p>
             <div v-for="(subjects, m) in dataCard.subjects" :key="m">
               <v-row>
-                <v-col cols="3">
-                  <p class="mr-1">- {{ subjects.name }}</p>
+                <v-col cols="5">
+                  <p>- {{ subjects.name }}</p>
                 </v-col>
-                <v-col cols="8" class="ml-10">
+                <v-col cols="6" class="ml-10">
                   <p>
                     {{ $t('studentProfile.subPrice') }} {{ subjects.price }}
+                    {{ subjects.currency }}
                   </p>
                 </v-col>
               </v-row>
@@ -114,12 +115,13 @@
             <p class="text-overline mb-4">{{ $t('studentProfile.subName') }}</p>
             <div v-for="(subjects, m) in dataCard.subjects" :key="m">
               <v-row>
-                <v-col cols="3">
-                  <p class="mr-1">- {{ subjects.name }}</p>
+                <v-col cols="5">
+                  <p>- {{ subjects.name }}</p>
                 </v-col>
-                <v-col cols="8" class="ml-10">
+                <v-col cols="6" class="ml-10">
                   <p>
                     {{ $t('studentProfile.subPrice') }} {{ subjects.price }}
+                    {{ subjects.currency }}
                   </p>
                 </v-col>
               </v-row>

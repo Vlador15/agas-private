@@ -85,19 +85,19 @@
             >
               <v-row style="text-align: left">
                 <v-col cols="6">
-                  {{ $t('teacherProfile.descriptionLesson') }}
+                  {{ $t('teacherProfile.descriptionLesson') }}:
                   {{ dataTeacher.descriptionLesson }}
                 </v-col>
                 <v-col cols="6">
-                  {{ $t('teacherProfile.contactInformation') }}
+                  {{ $t('teacherProfile.contactInformation') }}:
                   {{ dataTeacher.contactInformation }}
                 </v-col>
                 <v-col cols="6">
-                  {{ $t('teacherProfile.education') }}
+                  {{ $t('teacherProfile.education') }}:
                   {{ dataTeacher.education }}
                 </v-col>
                 <v-col cols="6">
-                  {{ $t('teacherProfile.about') }} {{ dataTeacher.aboutMe }}
+                  {{ $t('teacherProfile.about') }}: {{ dataTeacher.aboutMe }}
                 </v-col>
               </v-row>
             </v-card>

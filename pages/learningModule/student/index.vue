@@ -212,7 +212,7 @@
             </v-col>
           </v-row> -->
           <v-row>
-            <v-col cols="6" md="8" class="pa-5 my-n4 ms-5">
+            <v-col cols="6" md="8" class="pa-5 mt-5 ms-5">
               <v-textarea
                 v-model="formTeacher.aboutMe"
                 :rules="[v => !!v || $t('learningModule.rulesField')]"
