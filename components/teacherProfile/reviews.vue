@@ -16,7 +16,6 @@
               background-color="white"
               color="yellow accent-4"
               dense
-              half-increments
               hover
               size="18"
             ></v-rating>
@@ -45,67 +44,89 @@
       </v-dialog>
     </div>
 
-    <div v-for="(sub, i) in data" :key="i" class="my-12">
-      <v-card
-        class="mx-auto elevation-20"
-        color="primary"
-        dark
-        readonly
-        style="max-width: 850px"
-      >
+    <div v-for="(sub, i) in data" :key="i" class="my-6">
+      <v-card class="mx-auto elevation-2" color="card-reviews" readonly>
         <v-row justify="space-between">
-          <v-col cols="12" md="3" xs="4">
+          <v-col cols="12" md="12" lg="12">
             <v-card-title>
-              <v-row>
-                <v-col cols="12" class="text-h7 pa-4">
+              <div>
+                <img
+                  class="reviews-img"
+                  :src="profileImg(sub.photo)"
+                  alt="logo"
+                />
+              </div>
+              <v-row class="reviews-block">
+                <p class="text-title">
                   {{ sub.fullName }}
-                </v-col>
-                <v-col class="text-h7 pa-4" style="font-size: 15px">
+                </p>
+                <p class="text-desc">
                   {{ new Date(sub.createdAt).toLocaleString() }}
-                </v-col>
+                </p>
+                <div class="d-flex">
+                  <v-rating
+                    v-model="sub.rating"
+                    background-color="white"
+                    color="yellow accent-4"
+                    dense
+                    readonly
+                    hover
+                    size="18"
+                  ></v-rating>
+                  <span class="grey--text text--lighten-2 text-caption mr-2"
+                    >({{ sub.rating }})</span
+                  >
+                </div>
               </v-row>
             </v-card-title>
+            <v-card-title class="reviews-text">
+              <p class="text-title">{{ sub.text }}</p>
+            </v-card-title>
           </v-col>
-          <v-col cols="12" md="4">
-            <div class="ma-8">
-              <v-row>
-                <v-rating
-                  v-model="sub.rating"
-                  background-color="white"
-                  color="yellow accent-4"
-                  dense
-                  readonly
-                  half-increments
-                  hover
-                  size="18"
-                ></v-rating>
-                <span class="grey--text text--lighten-2 text-caption mr-2"
-                  >({{ sub.rating }})</span
-                >
-              </v-row>
-            </div>
-          </v-col>
-
-          <v-img
-            class="shrink ma-4 mr-8"
-            height="125px"
-            :src="profileImg(sub.photo)"
-            style="flex-basis: 125px"
-          ></v-img>
         </v-row>
-
-        <v-divider dark></v-divider>
-        <v-card-actions class="pa-4">
-          <!-- <v-textarea v-model="sub.text"></v-textarea> -->
-          <div class="text-h5" style="overflow: auto">
-            {{ sub.text }}
-          </div>
-          <v-spacer></v-spacer>
-        </v-card-actions>
       </v-card>
     </div>
   </v-container>
 </template>
+
+<style lang="scss">
+.reviews-block {
+  line-height: normal;
+  display: flex;
+  flex-direction: column;
+}
+.reviews-block p {
+  margin-bottom: 0;
+}
+.card-reviews {
+  border-radius: 5px;
+  border: 1px solid #d7d7d7 !important;
+  border-color: #d7d7d7 !important;
+  background-color: #f7f7f7 !important;
+  color: #000;
+}
+.reviews-img {
+  width: 70px;
+  height: 70px;
+  max-width: 70px;
+  max-height: 70px;
+  border-radius: 50%;
+  margin: 1rem 2rem;
+
+  @media (max-width: 500px) {
+    margin: 0.5rem 1rem;
+  }
+  @media (max-width: 400px) {
+    margin: 0.5rem 1rem 0.5rem 0;
+  }
+}
+.reviews-text {
+  margin-top: -32px;
+  @media (max-width: 500px) {
+    margin-top: -0;
+  }
+}
+</style>
 
 <script>
 export default {
@@ -134,7 +155,7 @@ export default {
 
   methods: {
     profileImg(path) {
-      return `${process.env.LEARNING_API}/${path}`
+      return `${process.env.LEARNING_API}/apiLearning/${path}`
     },
     async sendReviews() {
       this.dataFeedback.teacherId = this.uId

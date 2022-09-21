@@ -4,6 +4,7 @@ export default {
     { text: 'М', value: 'male' },
     { text: 'Ж', value: 'female' }
   ],
+  profile: 'Профиль',
   name: 'Имя',
   surname: 'Фамилия',
   location: 'Место жительства',
@@ -64,8 +65,8 @@ export default {
   ],
   tabs: [
     { name: 'Данные профиля', link: '#tab-1' },
-    { name: 'Мои публикации', link: '#tab-2' },
-    { name: 'Создать объявление', link: '#tab-3' }
+    { name: 'Мои публикации', link: '#tab-2' }
+    // { name: 'Создать объявление', link: '#tab-3' }
   ],
   imageLegthErr: 'Файл фото не должен быть больше 10 MB!'
 }

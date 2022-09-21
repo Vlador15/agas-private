@@ -45,25 +45,35 @@
         <v-row class="mb-3">
           <v-col>
             <!------------------ PROFILE DATA ------------------>
-            <div
-              class="text-center mb-3 title text-secundario font-weight-bold"
-            >
-              <span>@</span>{{ dataStudent.fullName }}
+            <div class="mb-3 title text-secundario font-weight-bold">
+              <v-icon left>{{ svg.name }}</v-icon
+              >{{ dataStudent.fullName }}
             </div>
+
+            <div v-if="dataStudent.email" class="mb-3">
+              <v-icon left>{{ svg.email }}</v-icon
+              >{{ dataStudent.email }}
+            </div>
+
+            <div>
+              <v-icon left>{{ svg.id }}</v-icon
+              ><span style="font-size: 10px">{{ dataStudent.uid }}</span>
+            </div>
+            <!-- 
             <div
               v-if="dataStudent.aboutMe"
               class="text-center mb-3 pr-5 pl-5 font-weight-regular"
             >
               {{ dataStudent.aboutMe }}
-            </div>
-            <div v-if="dataStudent.email" class="text-center mb-3">
+            </div> -->
+            <!-- <div v-if="dataStudent.email" class="text-center mb-3">
               <v-icon>{{ svg.web }}</v-icon>
               <span>
                 <a :href="dataStudent.email" target="_blank"
                   >&nbsp;{{ dataStudent.email }}</a
                 >
               </span>
-            </div>
+            </div> -->
             <!-- <div class="text-center mb-3">
               <v-icon>{{ svg.bitcoin }}</v-icon>
               <span>{{ data.bBalance }}</span>
@@ -80,15 +90,12 @@
                 v-if="isAuthenticated && userCredentials.handle === data.handle"
               >
                 <!--------------- EDIT PROFILE MODAL ----------------->
-                <v-row class="center">
+                <div>
                   <v-btn color="primary" dark @click="editProfile()">
                     <v-icon left>{{ svg.pencil }}</v-icon>
                     {{ $t('profile.editProfile') }}
                   </v-btn>
-                </v-row>
-                <v-row class="center mt-8">
-                  <p style="font-size: 12px">id: {{ dataStudent.uid }}</p>
-                </v-row>
+                </div>
                 <!-- <AppEditProfile :data="data"></AppEditProfile> -->
                 <!---------------END EDIT PROFILE MODAL ------------->
               </div>
@@ -111,7 +118,10 @@ import {
   mdiCalendar,
   mdiPencil,
   mdiCameraRetakeOutline,
-  mdiCurrencyBtc
+  mdiCurrencyBtc,
+  mdiAt,
+  mdiAccount,
+  mdiIdentifier
 } from '@mdi/js'
 
 // VUEX
@@ -137,13 +147,18 @@ export default {
       calendar: mdiCalendar,
       pencil: mdiPencil,
       camera: mdiCameraRetakeOutline,
-      bitcoin: mdiCurrencyBtc
+      bitcoin: mdiCurrencyBtc,
+      email: mdiAt,
+      name: mdiAccount,
+      id: mdiIdentifier
     }
   }),
   computed: {
     ...mapGetters(['isAuthenticated', 'userCredentials', 'loadingForm']),
     profileImg() {
-      return `${process.env.LEARNING_API}/` + this.dataStudent.photo[0]
+      return (
+        `${process.env.LEARNING_API}/apiLearning/` + this.dataStudent.photo[0]
+      )
     }
   },
   mounted() {

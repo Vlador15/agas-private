@@ -15,7 +15,7 @@ export default {
   email: 'דואר אלקטרוני',
   contactInformation: 'פרטי קשר',
   education: 'השכלה',
-  placeOfWork: 'מקום עבודה',
+  placeOfWork: 'מוסד לימודים',
   aboutMe: 'תיאור אישי',
   descriptionLesson: 'תיאור אופן העברת שיעור',
   subRemotely: 'למידה מרחוק',

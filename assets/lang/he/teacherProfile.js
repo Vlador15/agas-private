@@ -11,7 +11,7 @@ export default {
   contactInformation: 'פרטי קשר',
   education: 'השכלה',
   descriptionLesson: 'תיאור אופן העברת שיעור',
-  placeOfWork: 'מקום עבודה',
+  placeOfWork: 'מוסד לימודים',
 
   email: 'דואר אלקטרוני',
 

@@ -1,5 +1,6 @@
 export default {
   login: 'Вход',
+  logout: 'Выйти',
   emailErr: 'Введите e-mail',
   password: 'Пароль',
   pwErr: 'Введите пароль',

@@ -4,6 +4,7 @@ export default {
     { text: 'זכר', value: 'male' },
     { text: 'נקבה', value: 'female' }
   ],
+  profile: 'פרופיל',
   name: 'שם',
   surname: 'שם משפחה',
   location: 'מקום מגורים',
@@ -64,8 +65,8 @@ export default {
   ],
   tabs: [
     { name: 'פרטי משתמש', link: '#tab-1' },
-    { name: 'פרסומים שלי', link: '#tab-2' },
-    { name: 'צור מודעה חדשה', link: '#tab-3' }
+    { name: 'פרסומים שלי', link: '#tab-2' }
+    // { name: 'צור מודעה חדשה', link: '#tab-3' }
   ],
   imageLegthErr: 'גודל הקובץ עד 10 מ"ב!'
 }

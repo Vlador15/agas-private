@@ -2,185 +2,255 @@
   <v-container v-if="!isLoading">
     <v-card max-width="1200">
       <v-img
-        class="white--text align-end"
-        height="100%"
+        class="white--text align-center teacher-fon-img"
         :src="require('@/assets/teacherProfile.jpg')"
       >
-        <v-row align="end" class="fill-height">
-          <v-col cols="12" md="4" sm="4" xs="4" class="ml-8">
-            <v-avatar size="230">
-              <v-img class="ma-8 profile" :src="profileImg"></v-img>
-            </v-avatar>
+        <v-row class="fill-height header-block columns">
+          <v-col class="columns" cols="12" md="12" lg="12">
+            <div class="column">
+              <div class="info-block__img">
+                <v-avatar size="170">
+                  <v-img class="ma-8 profile-img" :src="profileImg"></v-img>
+                </v-avatar>
+              </div>
+            </div>
+
+            <div class="column">
+              <div class="info-block">
+                <div class="info-block__text">
+                  <p class="profile-name">{{ dataTeacher.fullName }}</p>
+                  <p class="city">
+                    {{ $t('teacherProfile.location') }}:
+                    {{ dataTeacher.cityOfResidence.city }}
+                  </p>
+                  <p>
+                    {{ dataTeacher.age }}
+                    <span>{{ ageChange(dataTeacher.age) }}</span>
+                  </p>
+                  <div class="rating-block">
+                    <v-rating
+                      v-model="dataTeacher.rating"
+                      readonly
+                      background-color="yellow lighten-3"
+                      color="yellow"
+                      class="pa-0"
+                    >
+                    </v-rating>
+                    <span class="white--text text--lighten-2 text-caption">
+                      {{ $t('studentProfile.lengthReviews') }}:
+                      {{ dataTeacher.feedbacks.length }}
+                      <span class="grey--text text--lighten-2 text-caption">
+                        ({{ dataTeacher.rating.toFixed(1) }})
+                      </span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </v-col>
 
-          <v-col cols="12" md="4" sm="4" xs="4">
-            <v-row class="py-7 justify-center">
-              <v-col cols="7">
-                <v-rating
-                  v-model="dataTeacher.rating"
-                  readonly
-                  class="mr-n5"
-                  background-color="white lighten-3"
-                  color="white"
-                ></v-rating>
-              </v-col>
-              <v-col cols="5">
-                <span class="grey--text text--lighten-2 text-caption">
-                  ({{ dataTeacher.rating.toFixed(1) }})
-                </span>
-              </v-col>
-              <v-col v-if="dataTeacher.subscription.status" cols="12" md="11">
-                <div>{{ $t('teacherProfile.phoneTeacher') }}</div>
+          <v-col class="column" cols="12" md="12" lg="12">
+            <div class="buttons">
+              <div
+                v-if="dataTeacher.subscription.status && showPhone"
+                class="mr-2"
+              >
+                <div>{{ dataTeacher.phone }}</div>
+              </div>
 
-                <div v-if="showPhone" cols="5">
-                  <div>{{ dataTeacher.phone }}</div>
-                </div>
-                <div v-if="!showPhone" cols="4">
-                  <v-btn x-small @click="showPhone = true">{{
-                    $t('teacherProfile.showPhone')
-                  }}</v-btn>
-                </div>
-              </v-col>
-              <v-col cols="11">
-                <div>
-                  {{ $t('teacherProfile.location') }}:
-                  {{ dataTeacher.cityOfResidence.city }}
-                </div>
-              </v-col>
-              <v-col cols="11">
-                <div>
-                  {{ $t('teacherProfile.gender') }}:
-                  {{ dataTeacher.sex }}
-                </div>
-              </v-col>
-            </v-row>
+              <v-btn
+                v-if="dataTeacher.subscription.status && !showPhone"
+                small
+                color="primary"
+                class="mr-2"
+                @click="showPhone = true"
+                >{{ $t('teacherProfile.showPhone') }}</v-btn
+              >
+              <v-btn small color="primary" class="pa-2" @click="nextPageChat">{{
+                $t('teacherProfile.writeTeacher')
+              }}</v-btn>
+            </div>
           </v-col>
         </v-row>
-        <v-card-title class="ml-6"
-          >{{ dataTeacher.fullName }}
-          <div class="mx-3">
-            {{ $t('teacherProfile.age') }} {{ dataTeacher.age }}
-            <span>{{ ageChange(dataTeacher.age) }}</span>
-          </div>
-
-          <v-btn small @click="nextPageChat">{{
-            $t('teacherProfile.writeTeacher')
-          }}</v-btn>
-        </v-card-title>
       </v-img>
 
-      <v-card-text class="text--primary text-center">
-        <v-row class="justify-center">
+      <v-card-text>
+        <v-row>
           <v-col cols="12" md="12">
-            <v-card
-              width="100%"
-              outlined
-              style="
-                width: 100%;
-                background: #e2f1fc;
-                border: 1px solid #a9c9ff;
-                font-size: 16px;
-                padding: 1rem 0.5rem;
-              "
-            >
-              <v-row style="text-align: left">
-                <v-col cols="6">
+            <v-card width="100%" outlined class="text-card">
+              <div>
+                <p class="text-title">{{ $t('teacherProfile.about') }}:</p>
+                <p class="text-desc pb-4">{{ dataTeacher.aboutMe }}</p>
+              </div>
+              <div>
+                <p class="text-title">
                   {{ $t('teacherProfile.descriptionLesson') }}:
+                </p>
+                <p class="text-desc pb-4">
                   {{ dataTeacher.descriptionLesson }}
-                </v-col>
-                <v-col cols="6">
+                </p>
+              </div>
+              <div>
+                <p class="text-title">{{ $t('teacherProfile.education') }}:</p>
+                <p class="text-desc pb-4">{{ dataTeacher.education }}</p>
+              </div>
+              <div>
+                <p class="text-title">
                   {{ $t('teacherProfile.contactInformation') }}:
-                  {{ dataTeacher.contactInformation }}
-                </v-col>
-                <v-col cols="6">
-                  {{ $t('teacherProfile.education') }}:
-                  {{ dataTeacher.education }}
-                </v-col>
-                <v-col cols="6">
-                  {{ $t('teacherProfile.about') }}: {{ dataTeacher.aboutMe }}
-                </v-col>
-              </v-row>
+                </p>
+                <p class="text-desc">{{ dataTeacher.contactInformation }}</p>
+              </div>
+            </v-card>
+          </v-col>
+        </v-row>
+      </v-card-text>
+
+      <v-card-text>
+        <v-row>
+          <v-col cols="12" md="12">
+            <v-card width="100%" outlined class="text-card">
+              <div>
+                <p class="text-title mb-4">
+                  {{ $t('studentProfile.citiesForLessons') }}:
+                </p>
+                <span
+                  v-for="(city, j) in dataTeacher.citiesForLessons"
+                  :key="j"
+                  class="ellipse text-desc"
+                >
+                  {{ city.trim() }}
+                </span>
+              </div>
+            </v-card>
+          </v-col>
+        </v-row>
+      </v-card-text>
+
+      <v-card-text>
+        <v-row>
+          <v-col cols="12" md="12">
+            <v-card width="100%" outlined class="text-card">
+              <div>
+                <p class="text-title mb-4">{{ $t('subjectsTaught') }}:</p>
+
+                <v-simple-table dense style="max-width: 500px">
+                  <template v-slot:default>
+                    <tbody>
+                      <tr v-for="sub in dataTeacher.subjects" :key="sub.name">
+                        <td>{{ sub.name }}</td>
+                        <td>
+                          {{ sub.price }}{{ sub.currency }}/{{ $t('inHour') }}
+                        </td>
+                      </tr>
+                    </tbody>
+                  </template>
+                </v-simple-table>
+              </div>
             </v-card>
           </v-col>
         </v-row>
 
         <v-row>
-          <v-col
-            v-for="(sub, i) in dataTeacher.subjects"
-            :key="i"
-            cols="12"
-            md="4"
-            sm="4"
-            class="pr-14"
+          <reviews
+            class="px-auto mx-auto pt-10"
+            :data="feedbacks"
+            :uId="$route.params.teacherProfileFromStudent"
           >
-            <v-card
-              height="auto"
-              width="auto"
-              style="background: #a9c9ff; text-align: left; padding: 1em"
-            >
-              <p>{{ $t('teacherProfile.subName') }}</p>
-              <p class="text-h6 mb-1">
-                {{ sub.name }}
-              </p>
-              <!-- <v-text-field
-                v-model="sub.name"
-                clearable
-                clear-icon="mdi-close-circle"
-                label="Название предмета"
-                disabled
-              ></v-text-field> -->
-
-              <v-checkbox
-                v-if="sub.lessonLocation[0]"
-                v-model="sub.lessonLocation"
-                :label="$t('teacherProfile.subRemotely')"
-                :value="$t('teacherProfile.subRemotely')"
-                readonly
-              ></v-checkbox>
-              <v-checkbox
-                v-if="sub.lessonLocation[1]"
-                v-model="sub.lessonLocation"
-                :label="$t('teacherProfile.subHomeTeacher')"
-                :value="$t('teacherProfile.subHomeTeacher')"
-                readonly
-              ></v-checkbox>
-
-              <v-checkbox
-                v-if="sub.lessonLocation[2]"
-                v-model="sub.lessonLocation"
-                :label="$t('teacherProfile.subHomeStudent')"
-                :value="$t('teacherProfile.subHomeStudent')"
-                readonly
-              ></v-checkbox>
-              <v-checkbox
-                v-if="sub.lessonLocation[3]"
-                v-model="sub.lessonLocation"
-                :label="$t('teacherProfile.subHomeTeacherOrStudent')"
-                :value="$t('teacherProfile.subHomeTeacherOrStudent')"
-                readonly
-              ></v-checkbox>
-              <p>Цена</p>
-              <p class="text-h6 mb-1">
-                {{ sub.price }}
-              </p>
-              <p>{{ $t('teacherProfile.subCurrency') }}</p>
-              <p class="text-h6 mb-1">
-                {{ sub.currency }}
-              </p>
-            </v-card>
-          </v-col>
+          </reviews>
         </v-row>
       </v-card-text>
     </v-card>
-    <reviews
-      style="background: #e3f2fd"
-      class="px-auto mx-auto pt-10"
-      :data="feedbacks"
-      :uId="$route.params.teacherProfileFromStudent"
-    >
-    </reviews>
   </v-container>
 </template>
+
+<style lang="scss">
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+}
+@media (max-width: 540px) {
+  .buttons button {
+    width: 100%;
+    margin: 0.2rem 0 !important;
+  }
+}
+.columns {
+  display: flex;
+  padding: 0 0.75rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.column {
+  display: block;
+  padding: 0.75rem;
+}
+.header-block {
+  display: flex;
+  justify-content: space-between;
+}
+.info-block__img {
+  margin-right: 1rem;
+}
+.profile-img {
+  border: 5px solid #fff;
+}
+.profile-name {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+.info-block p {
+  margin-bottom: 0 !important;
+}
+.info-block {
+  font-size: 18px !important;
+}
+
+.teacher-fon-img {
+  max-height: 350px;
+
+  @media (max-width: 620px) {
+    max-height: none;
+    padding: 1rem;
+  }
+  @media (max-width: 400px) {
+    padding: 0.5rem;
+  }
+}
+
+.text-block {
+  border: 1px solid #ccc;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 0.5rem;
+}
+.text-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #484848;
+  line-height: 1.125;
+  margin-bottom: 0.5rem !important;
+}
+.text-desc {
+  font-size: 14px;
+  color: #4a4a4a;
+}
+.text-card {
+  width: 100%;
+  background: #f9f9f9;
+  border: 1px solid #a9c9ff;
+  font-size: 16px;
+  padding: 1rem 0.5rem;
+}
+.ellipse {
+  border: 1px solid #ccc;
+  background: #fff;
+  padding: 0.5rem;
+  border-radius: 15px;
+  margin-right: 0.5rem;
+  line-height: 40px;
+}
+</style>
 
 <script>
 import reviews from '@/components/teacherProfile/reviews.vue'
@@ -212,7 +282,9 @@ export default {
     ...mapGetters(['getTeacherIdData']),
 
     profileImg() {
-      return `${process.env.LEARNING_API}/` + this.dataTeacher.photo[0]
+      return (
+        `${process.env.LEARNING_API}/apiLearning/` + this.dataTeacher.photo[0]
+      )
     }
   },
   async mounted() {
@@ -227,22 +299,22 @@ export default {
         this.$route.params.teacherProfileFromStudent
       )
       this.dataTeacher = this.getTeacherIdData
-      console.log(this.dataTeacher)
       this.feedbacks = this.getTeacherIdData.feedbacks
+      console.log(this.dataTeacher)
     },
     ageChange(n) {
       n = Math.abs(n) % 100
       const n1 = n % 10
       if (n > 10 && n < 20) {
-        return this.text_forms[2]
+        return this.text_forms[2].toLowerCase()
       }
       if (n1 > 1 && n1 < 5) {
-        return this.text_forms[1]
+        return this.text_forms[1].toLowerCase()
       }
       if (n1 === 1) {
-        return this.text_forms[0]
+        return this.text_forms[0].toLowerCase()
       }
-      return this.text_forms[2]
+      return this.text_forms[2].toLowerCase()
     },
     nextPageChat() {
       this.$router.push({

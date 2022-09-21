@@ -15,7 +15,7 @@ export default {
   email: 'Электронная почта',
   contactInformation: 'Контактные данные',
   education: 'Образование',
-  placeOfWork: 'Место работы',
+  placeOfWork: 'Где учился',
   aboutMe: 'О себе',
   descriptionLesson: 'Описание, как проводится урок',
   subRemotely: 'Дистанционно',
@@ -23,7 +23,7 @@ export default {
   subHomeStudent: 'Дома у ученика',
   subHomeTeacherOrStudent: 'Дома у преподавателя или у ученика',
   delete: 'Удалить',
-  addField: 'Добавить поле',
+  addField: 'Добавить предмет',
   create: 'Создать',
 
   mySubjects: 'Мои предметы',

@@ -42,9 +42,7 @@ export default {
     return {}
   },
   computed: {},
-  mounted() {
-    // console.log(this.data.subscription)
-  },
+  mounted() {},
   methods: {
     buySub() {
       this.$router.push({

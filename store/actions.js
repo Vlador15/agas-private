@@ -455,10 +455,15 @@ export default {
       await dispatch('AUTH_USER', `Bearer ${response.data.token}`)
       await dispatch('FETCH_AUTH_USER')
       commit('SET_LOADING', { name: 'form', value: false })
-      this.$router.push({ name: `index___${this.$i18n.locale}` })
+      // this.$router.push({ name: `index__${this.$i18n.locale}` })
+      const path =
+        this.$i18n.locale === 'he'
+          ? `/learningModule`
+          : `/${this.$i18n.locale}/learningModule`
+      this.$router.push({ path })
     } catch (err) {
       if (err.response.status === 403) {
-        commit('SET_ERROR', 'Не правильная почта или пароль')
+        commit('SET_ERROR', 'Неправильная почта или пароль')
       }
       commit('SET_LOADING', { name: 'form', value: false })
     }

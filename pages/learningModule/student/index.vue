@@ -80,14 +80,6 @@
           </v-row>
           <v-row>
             <v-col cols="6" md="5" class="ma-2 ms-8">
-              <!-- <v-select
-                v-model="formTeacher.cityOfResidence.country"
-                :rules="[v => !!v || $t('learningModule.rulesField')]"
-                :items="countryItems"
-                :label="$t('learningModule.country')"
-                required
-                @input="onInput"
-              ></v-select> -->
               <v-autocomplete
                 v-model="formTeacher.cityOfResidence.country"
                 :rules="[v => !!v || $t('learningModule.rulesField')]"
@@ -103,13 +95,6 @@
               md="5"
               class="ma-2 ms-10"
             >
-              <!-- <v-select
-                v-model="formTeacher.cityOfResidence.city"
-                :rules="[v => !!v || $t('learningModule.rulesField')]"
-                :items="cityItems"
-                :label="$t('learningModule.residenceCity')"
-                required
-              ></v-select> -->
               <v-text-field
                 v-model="formTeacher.cityOfResidence.city"
                 :rules="[v => !!v || $t('learningModule.rulesField')]"
@@ -119,40 +104,6 @@
             </v-col>
           </v-row>
 
-          <!-- <v-row>
-            <v-col
-              v-if="formTeacher.cityOfResidence.city"
-              cols="6"
-              md="6"
-              class="ma-2 ms-8"
-            >
-              <h3>{{ $t('learningModule.cityLessons') }}</h3>
-              <div v-for="(cityField, i) in cities" :key="i">
-                <v-row>
-                  <v-col cols="6" md="6" class="ma-2">
-                    <v-select
-                      v-model="cityField.value"
-                      :rules="[v => !!v || $t('learningModule.rulesField')]"
-                      :items="cityLessonItems"
-                      :label="cityField.labelCity"
-                      required
-                    ></v-select>
-                  </v-col>
-                  <v-col cols="4" md="4" class="mt-5">
-                    <v-btn class="error" @click="removeCity(i)">{{
-                      $t('learningModule.deleteCity')
-                    }}</v-btn>
-                  </v-col>
-                </v-row>
-              </div>
-
-              <div cols="6" md="6" class="ma-2">
-                <v-btn class="primary" @click="addCity">{{
-                  $t('learningModule.addCity')
-                }}</v-btn>
-              </div>
-            </v-col>
-          </v-row> -->
           <v-row>
             <v-col cols="6" md="5" class="ma-2 ms-8">
               <v-text-field
@@ -197,20 +148,6 @@
               ></v-textarea>
             </v-col>
           </v-row>
-
-          <!-- <v-row>
-            <v-col cols="6" md="8" class="pa-5 my-n4 ms-5">
-              <v-textarea
-                v-model="formTeacher.placeOfWork"
-                clearable
-                auto-grow
-                clear-icon="mdi-close-circle"
-                :rules="[v => !!v || $t('learningModule.rulesField')]"
-                :label="$t('learningModule.placeOfWork')"
-                required
-              ></v-textarea>
-            </v-col>
-          </v-row> -->
           <v-row>
             <v-col cols="6" md="8" class="pa-5 mt-5 ms-5">
               <v-textarea
@@ -224,89 +161,6 @@
               ></v-textarea>
             </v-col>
           </v-row>
-          <!-- <v-row>
-            <v-col cols="6" md="8" class="pa-5 my-n4 ms-5">
-              <v-textarea
-                v-model="formTeacher.descriptionLesson"
-                :rules="[v => !!v || $t('learningModule.rulesField')]"
-                clearable
-                auto-grow
-                clear-icon="mdi-close-circle"
-                :label="$t('learningModule.descriptionLesson')"
-                required
-              ></v-textarea>
-            </v-col>
-          </v-row> -->
-          <!-- <v-row>
-            <v-col cols="6" md="6" class="pa-5 my-n2 ms-5">
-              <h3>{{ $t('learningModule.mySubjects') }}</h3>
-
-              <div v-for="(textField, i) in subjectsSecond" :key="i">
-                <v-text-field
-                  v-model="textField.value1"
-                  :rules="[v => !!v || $t('learningModule.rulesField')]"
-                  :label="textField.label1"
-                  required
-                ></v-text-field>
-
-                <v-checkbox
-                  v-model="selected"
-                  :rules="checkboxRules"
-                  :label="$t('learningModule.subRemotely')"
-                  :value="subRemotely"
-                  required
-                ></v-checkbox>
-                <v-checkbox
-                  v-model="selected"
-                  :rules="checkboxRules"
-                  :label="$t('learningModule.subHomeTeacher')"
-                  :value="subHomeTeacher"
-                  required
-                ></v-checkbox>
-
-                <v-checkbox
-                  v-model="selected"
-                  :rules="checkboxRules"
-                  :label="$t('learningModule.subHomeStudent')"
-                  :value="subHomeStudent"
-                  required
-                ></v-checkbox>
-                <v-checkbox
-                  v-model="selected"
-                  :rules="checkboxRules"
-                  :label="$t('learningModule.subHomeTeacherOrStudent')"
-                  :value="subHomeTeacherOrStudent"
-                  required
-                ></v-checkbox>
-                <v-text-field
-                  v-model="textField.value3"
-                  :rules="numRules"
-                  :label="textField.label3"
-                  required
-                ></v-text-field>
-
-                <v-select
-                  v-model="textField.value4"
-                  :rules="[v => !!v || $t('learningModule.rulesField')]"
-                  :label="textField.label4"
-                  :items="CurrencyItem"
-                  required
-                ></v-select>
-
-                <v-col cols="6" md="6" class="ma-2">
-                  <v-btn class="error" @click="remove(i)">{{
-                    $t('learningModule.delete')
-                  }}</v-btn>
-                </v-col>
-              </div>
-
-              <v-col cols="6" md="6" class="ma-2">
-                <v-btn class="primary" @click="add">{{
-                  $t('learningModule.addField')
-                }}</v-btn>
-              </v-col>
-            </v-col>
-          </v-row> -->
           <v-row justify="center">
             <v-col md="4" offset-md="10" class="ma-2 ms-5">
               <v-btn

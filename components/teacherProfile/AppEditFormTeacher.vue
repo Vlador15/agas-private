@@ -4,18 +4,19 @@
       <v-row class="px-12 pt-6 justify-center">
         <!----------- PERSONAL ---------------------->
         <v-row class="pb-12 justify-center">
-          <v-col cols="12" md="4">
+          <v-col v-model="dataTeacher.fullName" cols="12" md="6" class="pb-0">
             <v-text-field
-              v-model="dataTeacher.fullName"
               clearable
               :rules="fullNameRules"
               :prepend-inner-icon="svg.user"
               clear-icon="mdi-close-circle"
               :label="$t('teacherProfile.name')"
               :disabled="disabled"
-            ></v-text-field>
+            >
+              ></v-text-field
+            >
           </v-col>
-          <v-col cols="12" md="4">
+          <v-col cols="12" md="6" class="pb-0">
             <v-select
               key="value"
               v-model="dataTeacher.sex"
@@ -23,9 +24,10 @@
               :items="sexItem"
               :label="$t('teacherProfile.gender')"
               :disabled="disabled"
+              class="checkbox-edit-norm"
             ></v-select>
           </v-col>
-          <v-col cols="12" md="4">
+          <v-col cols="12" md="6" class="pb-0 pt-0">
             <v-menu
               ref="menu"
               v-model="menu"
@@ -65,37 +67,7 @@
               </v-date-picker>
             </v-menu>
           </v-col>
-          <!-- <v-col cols="12" md="4">
-            <v-menu
-              ref="menu"
-              v-model="menu"
-              transition="scale-transition"
-              offset-y
-              min-width="290px"
-            >
-              <template v-slot:activator="{ on, attrs }">
-                <v-text-field
-                  v-model="birthday"
-                  :disabled="disabled"
-                  :label="$t('teacherProfile.birthday')"
-                  clearable
-                  clear-icon="mdi-close-circle"
-                  :prepend-inner-icon="svg.calendarStar"
-                  readonly
-                  v-bind="attrs"
-                  v-on="on"
-                ></v-text-field>
-              </template>
-              <v-date-picker
-                ref="picker"
-                v-model="birthday"
-                locale="ru"
-                :max="new Date().toISOString().substr(0, 10)"
-                min="1930-01-01"
-              ></v-date-picker>
-            </v-menu>
-          </v-col> -->
-          <v-col cols="12" md="4">
+          <v-col cols="12" md="6" class="pb-0 pt-0">
             <v-autocomplete
               v-model="country"
               :rules="[() => !!country || $t('teacherProfile.fieldRules')]"
@@ -106,7 +78,7 @@
               @input="onInput"
             ></v-autocomplete>
           </v-col>
-          <v-col cols="12" md="4">
+          <v-col cols="12" md="6" class="pb-0 pt-0">
             <v-text-field
               v-model="city"
               :label="$t('teacherProfile.location')"
@@ -115,16 +87,8 @@
               clear-icon="mdi-close-circle"
               :disabled="disabled"
             ></v-text-field>
-            <!-- <v-autocomplete
-              v-model="city"
-              :rules="[v => !!v || $t('teacherProfile.fieldRules')]"
-              :items="cityItems"
-              :prepend-inner-icon="svg.location"
-              :label="$t('teacherProfile.location')"
-              :disabled="disabled"
-            ></v-autocomplete> -->
           </v-col>
-          <v-col cols="12" md="4">
+          <v-col cols="12" md="6" class="pb-0 pt-0">
             <v-text-field
               v-model="dataTeacher.phone"
               :prepend-inner-icon="svg.phone"
@@ -137,7 +101,7 @@
             ></v-text-field>
           </v-col>
 
-          <v-col cols="12" md="4">
+          <v-col cols="12" md="6" class="pb-0 pt-0">
             <v-text-field
               v-model="dataTeacher.email"
               :prepend-inner-icon="svg.email"
@@ -148,21 +112,8 @@
               :disabled="disabled"
             ></v-text-field>
           </v-col>
-          <v-col cols="12" md="4">
-            <v-textarea
-              v-model="dataTeacher.contactInformation"
-              clearable
-              auto-grow
-              rows="2"
-              row-height="10"
-              :prepend-inner-icon="svg.info"
-              clear-icon="mdi-close-circle"
-              :label="$t('teacherProfile.contactInformation')"
-              :disabled="disabled"
-            ></v-textarea>
-          </v-col>
 
-          <v-col cols="12" md="4">
+          <v-col cols="12" md="6" class="pb-0 pt-0">
             <v-select
               v-model="dataTeacher.education"
               :items="educationItems"
@@ -172,12 +123,24 @@
             ></v-select>
           </v-col>
 
-          <v-col cols="12" md="4">
+          <v-col cols="12" md="6" class="pb-0 pt-0">
+            <v-textarea
+              v-model="dataTeacher.contactInformation"
+              clearable
+              auto-grow
+              row-height="10"
+              :prepend-inner-icon="svg.info"
+              clear-icon="mdi-close-circle"
+              :label="$t('teacherProfile.contactInformation')"
+              :disabled="disabled"
+            ></v-textarea>
+          </v-col>
+
+          <v-col cols="12" md="6" class="pb-0 pt-0">
             <v-textarea
               v-model="dataTeacher.placeOfWork"
               clearable
               auto-grow
-              rows="2"
               row-height="10"
               :prepend-inner-icon="svg.office"
               clear-icon="mdi-close-circle"
@@ -186,12 +149,11 @@
             ></v-textarea>
           </v-col>
 
-          <v-col cols="12" md="4">
+          <v-col cols="12" md="6" class="pb-0 pt-0">
             <v-textarea
               v-model="dataTeacher.aboutMe"
               clearable
               auto-grow
-              rows="1"
               row-height="10"
               :prepend-inner-icon="svg.human"
               clear-icon="mdi-close-circle"
@@ -200,12 +162,11 @@
             ></v-textarea>
           </v-col>
 
-          <v-col cols="12" md="4">
+          <v-col cols="12" md="6" class="pb-0 pt-0">
             <v-textarea
               v-model="dataTeacher.descriptionLesson"
               clearable
               auto-grow
-              rows="2"
               row-height="10"
               :prepend-inner-icon="svg.skill"
               clear-icon="mdi-close-circle"
@@ -215,100 +176,81 @@
           </v-col>
         </v-row>
       </v-row>
-      <v-row class="pt-n10 px-7 justify-center">
-        <v-col v-for="(cityField, i) in cities" :key="i" cols="6" md="4">
-          <!-- <v-select
-            v-model="cityField.value"
-            :rules="[v => !!v || $t('teacherProfile.fieldRules')]"
-            :items="cityLessonItems"
-            :label="$t('teacherProfile.citiesForLessons')"
-            :disabled="disabled"
-            class="d-flex flex-row mb-6"
-            style="min-width: 174px"
-          ></v-select> -->
-          <!-- <v-autocomplete
-            v-model="cityField.value"
-            :rules="[v => !!v || $t('teacherProfile.fieldRules')]"
-            :items="cityLessonItems"
-            :label="$t('teacherProfile.citiesForLessons')"
-            :disabled="disabled"
-            class="d-flex flex-row mb-6"
-            style="min-width: 174px"
-          ></v-autocomplete> -->
+      <v-row class="pt-n10 px-7">
+        <v-col v-for="(cityField, i) in cities" :key="i" cols="6" md="6">
           <v-text-field
             v-model="cityField.value"
             :rules="[v => !!v || $t('teacherProfile.fieldRules')]"
             :label="$t('teacherProfile.citiesForLessons')"
             :disabled="disabled"
-            class="d-flex flex-row mb-6"
-            style="min-width: 174px"
+            class="d-flex flex-row input-edit-norm"
+            style="min-width: 150px"
           ></v-text-field>
           <v-btn
             v-if="profileEditable"
             class="error"
             :disabled="disabled"
+            small
             @click="removeCity(i)"
             >{{ $t('teacherProfile.delete') }}</v-btn
           >
         </v-col>
       </v-row>
+
       <v-row class="pt-n10 px-7 justify-center">
-        <v-col v-if="profileEditable" cols="12" md="4" class="pt-7">
-          <v-btn class="primary" @click="addCity">{{
+        <v-col v-if="profileEditable" cols="12" md="6" class="pt-7">
+          <v-btn class="primary" small @click="addCity">{{
             $t('teacherProfile.addCity')
           }}</v-btn>
         </v-col>
       </v-row>
-      <v-row class="px-12 pt-6 justify-center">
-        <v-col cols="12" md="6">
+
+      <v-row class="px-12 pt-6">
+        <v-col cols="12" md="12">
           <h2 class="text-h5 center">{{ $t('teacherProfile.subjects') }}</h2>
         </v-col>
-        <v-col cols="12" md="6" class="pa-5 my-n2 ms-5">
-          <div v-for="(sub, i) in dataTeacher.subjects" :key="i">
-            <v-divider v-if="i >= 1" class="my-4"></v-divider>
-
-            <!-- <v-select
-              v-if="sub.name"
-              v-model="sub.name"
-              :prepend-inner-icon="svg.range"
+        <v-col
+          v-for="(sub, i) in dataTeacher.subjects"
+          :key="i"
+          cols="12"
+          md="6"
+          style="padding: 0.5rem"
+        >
+          <div class="card-item p-1">
+            <v-select
+              v-model="sub.categoryName"
+              :rules="[v => !!v || $t('teacherProfile.fieldRules')]"
+              background-color="white"
+              :label="$t('studentProfile.subCategory')"
               clearable
-              clear-icon="mdi-close-circle"
+              :items="categoryItem"
+              :disabled="disabled"
+              class="input-edit-norm"
+              @change="getSubject(sub.categoryName, i)"
+            ></v-select>
+            <v-select
+              v-if="sub.openSubject"
+              v-model="sub.name"
+              background-color="white"
               :label="$t('studentProfile.subName')"
-              :items="itemSub"
-              disabled
-            ></v-select> -->
-            <div>
-              <v-select
-                v-model="sub.categoryName"
-                :rules="[v => !!v || $t('teacherProfile.fieldRules')]"
-                background-color="white"
-                :label="$t('studentProfile.subCategory')"
-                clearable
-                :items="categoryItem"
-                :disabled="disabled"
-                @change="getSubject(sub.categoryName, i)"
-              ></v-select>
-              <v-select
-                v-if="sub.openSubject"
-                v-model="sub.name"
-                background-color="white"
-                :label="$t('studentProfile.subName')"
-                clearable
-                :items="sub.subjectItems"
-                :disabled="disabled"
-              ></v-select>
-            </div>
+              clearable
+              :items="sub.subjectItems"
+              :disabled="disabled"
+              class="input-edit-norm"
+            ></v-select>
             <v-checkbox
               v-model="sub.lessonLocation"
               :label="$t('teacherProfile.subRemotely')"
               :value="$t('teacherProfile.subRemotely')"
               :disabled="disabled"
+              class="checkbox-edit-norm"
             ></v-checkbox>
             <v-checkbox
               v-model="sub.lessonLocation"
               :label="$t('teacherProfile.subHomeTeacher')"
               :value="$t('teacherProfile.subHomeTeacher')"
               :disabled="disabled"
+              class="checkbox-edit-norm"
             ></v-checkbox>
 
             <v-checkbox
@@ -316,12 +258,14 @@
               :label="$t('teacherProfile.subHomeStudent')"
               :value="$t('teacherProfile.subHomeStudent')"
               :disabled="disabled"
+              class="checkbox-edit-norm"
             ></v-checkbox>
             <v-checkbox
               v-model="sub.lessonLocation"
               :label="$t('teacherProfile.subHomeTeacherOrStudent')"
               :value="$t('teacherProfile.subHomeTeacherOrStudent')"
               :disabled="disabled"
+              class="checkbox-edit-norm"
             ></v-checkbox>
 
             <v-text-field
@@ -332,6 +276,7 @@
               clear-icon="mdi-close-circle"
               :label="$t('teacherProfile.subPrice')"
               :disabled="disabled"
+              class="input-edit-norm"
             ></v-text-field>
 
             <v-select
@@ -340,19 +285,22 @@
               :items="CurrencyItem"
               :label="$t('teacherProfile.subCurrency')"
               :disabled="disabled"
+              class="input-edit-norm"
             ></v-select>
 
-            <v-col v-if="profileEditable" cols="6" md="6" class="ma-2">
-              <v-btn class="error" @click="remove(i)">{{
+            <v-col v-if="profileEditable" cols="12" md="12" class="pl-0">
+              <v-btn class="error" small @click="remove(i)">{{
                 $t('teacherProfile.delete')
               }}</v-btn>
             </v-col>
           </div>
-          <v-col v-if="profileEditable" cols="6" md="6" class="ma-2">
-            <v-btn class="primary" @click="add">{{
-              $t('teacherProfile.addField')
-            }}</v-btn>
-          </v-col>
+        </v-col>
+      </v-row>
+      <v-row v-if="profileEditable" class="pt-n10 px-7 justify-center">
+        <v-col cols="12" md="6">
+          <v-btn class="primary ml-1" small @click="add">{{
+            $t('teacherProfile.addField')
+          }}</v-btn>
         </v-col>
       </v-row>
 
@@ -379,6 +327,16 @@
     </v-form>
   </v-container>
 </template>
+
+<style lang="scss">
+.input-edit-norm {
+  margin-top: 0;
+}
+.checkbox-edit-norm:not(:last-child) {
+  margin-top: 0;
+  margin-bottom: -20px;
+}
+</style>
 
 <script>
 // ICONS
@@ -626,16 +584,35 @@ export default {
     remove(index) {
       this.dataTeacher.subjects.splice(index, 1)
     },
-    add() {
-      this.dataTeacher.subjects.push({
-        name: '',
-        lessonLocation: [],
-        price: 0,
-        currency: '',
-        categoryName: '',
-        openSubject: false,
-        subjectItems: []
-      })
+    async add() {
+      const subjects = this.dataTeacher.subjects
+      console.log(subjects)
+
+      if (subjects.length) {
+        const prevSubject = subjects[subjects.length - 1] || false
+        const prevSubjectsItems =
+          (await this.getSubject(prevSubject.categoryName)) || []
+
+        subjects.push({
+          name: '',
+          lessonLocation: prevSubject.lessonLocation || [],
+          price: prevSubject.price || 0,
+          currency: prevSubject.currency || '',
+          categoryName: prevSubject.categoryName || '',
+          openSubject: prevSubject.openSubject || false,
+          subjectItems: [...prevSubjectsItems]
+        })
+      } else {
+        subjects.push({
+          name: '',
+          lessonLocation: [],
+          price: 0,
+          currency: '',
+          categoryName: '',
+          openSubject: false,
+          subjectItems: []
+        })
+      }
     },
     cancelEdit() {
       this.$store.commit('PROFILE_EDITABLE_OFF')
@@ -711,5 +688,11 @@ export default {
 ::v-deep input::-webkit-outer-spin-button,
 ::v-deep input::-webkit-inner-spin-button {
   -webkit-appearance: none;
+}
+
+.card-item {
+  border: 1px solid #ccccccb8;
+  border-radius: 10px;
+  padding: 1rem;
 }
 </style>

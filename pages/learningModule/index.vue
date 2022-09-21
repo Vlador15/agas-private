@@ -1,18 +1,51 @@
 <template>
   <v-container v-if="!isLoading">
     <div class="ag-board-main-tabs">
-      <v-btn
+      <!-- <v-btn
         v-for="link in $t('learningModule_categories')"
         :key="link.routing"
         x-large
         color="primary"
+        class="categories-btn"
         @click="routerValid(link.routing, link.key)"
       >
-        {{ link.name }}
+        <p class="categories-text">{{ link.name }}</p>
       </v-btn>
-      <v-btn v-if="getValideModer" x-large color="primary" @click="nextModer()">
+
+      <v-img
+        v-for="link in $t('learningModule_categories')"
+        :key="link.routing"
+        class="categories-img"
+        :src="require('~/assets/teacherFon.jpg')"
+        @click="routerValid(link.routing, link.key)"
+      >
+        <p class="categories-text">
+          <span>{{ link.name }}</span>
+        </p>
+      </v-img> -->
+
+      <div
+        v-for="link in $t('learningModule_categories')"
+        :key="link.routing"
+        class="categories-btn"
+        @click="routerValid(link.routing, link.key)"
+      >
+        <img width="80" :src="link.img" alt="img" />
+        <p class="categories-text">
+          {{ link.name }}
+        </p>
+      </div>
+
+      <div v-if="getValideModer" class="categories-btn" @click="nextModer()">
+        <img width="80" :src="moder.img" alt="img" />
+        <p class="categories-text">
+          {{ moder.name }}
+        </p>
+      </div>
+
+      <!-- <v-btn v-if="getValideModer" x-large color="primary" @click="nextModer()">
         {{ moder.name }}
-      </v-btn>
+      </v-btn> -->
     </div>
   </v-container>
   <div v-else>
@@ -37,7 +70,8 @@ export default {
       moder: {
         name: this.$t('moder.Cabinetmoder'),
         routing: '/ru/learningModule/moderator',
-        key: 'moderator'
+        key: 'moderator',
+        img: require('~/assets/moderLogo.png')
       }
     }
   },
@@ -103,6 +137,32 @@ export default {
 <style lang="scss">
 @import 'assets/styles/mixins';
 @import 'assets/variables';
+
+.categories-btn {
+  background: linear-gradient(180deg, #00adff 0%, #4742ab 55%, #595bb7 100%);
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  cursor: pointer;
+}
+.categories-img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.categories-text {
+  color: #fff;
+  font-size: 20px;
+  text-align: center;
+  margin-bottom: 0 !important;
+  filter: drop-shadow(2px 4px 6px black);
+  font-weight: normal;
+  text-transform: none;
+  letter-spacing: 0;
+}
 
 .ag-board-main-tabs {
   margin: 15px 0;

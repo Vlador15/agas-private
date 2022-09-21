@@ -32,6 +32,10 @@ export default {
   breadcrumbs,
   profile,
   scream,
+  inHour: 'в час',
+  tutor: 'Частный преподаватель по',
+  trained: 'Обучался',
+  subjectsTaught: 'Преподаваемые предметы',
   notFound: 'Не найдено',
   pay: 'Купить',
   notifications: 'Уведомления',
@@ -39,11 +43,12 @@ export default {
   hello: 'Привет',
   text_search: 'Введите текст для поиска',
   search: 'Поиск',
+  optional: 'Необязательное поле',
   main_nav_links: [
     {
       title: 'Публикации',
       icon: 'mdi-newspaper-variant-multiple-outline',
-      link: '/ru',
+      link: '/ru/posts',
       home: true
     },
     { title: 'Профиль', icon: 'mdi-account-outline', link: '/ru/profile' },
@@ -55,18 +60,25 @@ export default {
     // },
     { title: 'Учебный модуль', icon: 'mdi-book', link: '/ru/learningModule' },
     { title: 'Подписки', icon: 'mdi-bank', link: '/ru/catalogs/catalogs' },
-    { title: 'Сообщения', icon: 'mdi-chat', link: '/ru/messager/dialogs' }
+    { title: 'Сообщения', icon: 'mdi-chat', link: '/ru/messager/dialogs' },
+    {
+      title: 'О нас',
+      icon: 'mdi-card-account-details-outline',
+      link: '/ru/about'
+    }
   ],
   learningModule_categories: [
     {
       name: 'Кабинет учащегося',
       routing: '/ru/learningModule/student',
-      key: 'student'
+      key: 'student',
+      img: require('~/assets/studentsLogo.png')
     },
     {
       name: 'Кабинет преподавателя',
       routing: '/ru/learningModule/teacher',
-      key: 'teacher'
+      key: 'teacher',
+      img: require('~/assets/teacherLogo.png')
     }
 
     // { name: 'База знаний', routing: '/ru/learningModule/base', key: 'base' }
@@ -179,5 +191,11 @@ export default {
     mb: 'Мб.'
   },
   notspecified: 'Не указано',
-  cancel: 'Отмена'
+  cancel: 'Отмена',
+  about: `Уникальный международный проект по поиску материалов и преподавателей
+  для школьников и студентов, с акцентом на конкретное учебное заведение.
+  Здесь Вы сможете найти формулы, алгоритмы решения, и другие материалы,
+  помогающие лучше подготовиться к экзаменам. А также сможете найти
+  преподавателей, имеющих опыт работы именно в Вашем учебном заведении по
+  любым предметам.`
 }

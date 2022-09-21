@@ -6,7 +6,6 @@
           v-model="tab"
           background-color="#E3F2FD"
           corol="primary"
-          centered
           icons-and-text
           show-arrows
         >
@@ -91,6 +90,14 @@
     </v-tabs-items>
   </v-container>
 </template>
+
+<style lang="scss">
+@media (max-width: 1264px) {
+  .container {
+    max-width: 100%;
+  }
+}
+</style>
 
 <script>
 // COMPONENTS

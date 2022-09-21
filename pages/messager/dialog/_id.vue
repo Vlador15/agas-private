@@ -27,11 +27,7 @@
 
       <div class="messager__footer">
         <div class="messager__input">
-          <textarea
-            class="messager__text"
-            type="text"
-            placeholder="Введите сообщение"
-          />
+          <textarea class="messager__text" type="text" />
           <button @click="sendMessage()">{{ $t('chat.send') }}</button>
         </div>
       </div>
@@ -158,7 +154,7 @@ export default {
     border: 1px solid #cccccc;
 
     p {
-      margin: 0 0 0 1rem;
+      margin: 0 1rem;
       color: #00b0f0;
       font-size: 24px;
     }
@@ -200,7 +196,7 @@ export default {
   }
 }
 .chat {
-  height: 550px;
+  height: 480px;
   max-height: 550px;
   border-left: 1px solid #cccccc;
   border-right: 1px solid #cccccc;

@@ -78,14 +78,14 @@ export default {
             flag: 'ru',
             file: 'ru.js',
             dir: 'ltr'
-          },
-          {
-            name: 'English',
-            code: 'en',
-            flag: 'gb',
-            file: 'en.js',
-            dir: 'ltr'
           }
+          // {
+          //   name: 'English',
+          //   code: 'en',
+          //   flag: 'gb',
+          //   file: 'en.js',
+          //   dir: 'ltr'
+          // }
         ],
         vueI18n: {
           fallbackLocale: 'he'

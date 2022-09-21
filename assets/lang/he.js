@@ -29,6 +29,10 @@ export default {
   breadcrumbs,
   profile,
   scream,
+  inHour: 'לשעה',
+  tutor: 'מורה פרטי ב',
+  trained: 'מוסד לימודים',
+  subjectsTaught: 'מקצועות לימוד',
   notFound: 'לא נמצא',
   pay: 'רכישה',
   notifications: 'התראות',
@@ -36,29 +40,37 @@ export default {
   hello: 'שלום',
   text_search: 'הקלד טקסט חיפוש',
   search: 'חיפוש',
+  optional: 'שדה לא חובה למילוי',
   main_nav_links: [
     {
       title: 'כתבות',
       icon: 'mdi-newspaper-variant-multiple-outline',
-      link: '/'
+      link: '/posts'
     },
     { title: 'פרופיל', icon: 'mdi-account-outline', link: '/profile' },
     { title: 'בארטינג', icon: 'mdi-bitcoin', link: '/barting' },
     // { title: 'לוח מודעות', icon: 'mdi-clipboard-text', link: '/board' },
     { title: 'לימודים', icon: 'mdi-book', link: '/learningModule' },
     { title: 'מנויים', icon: 'mdi-bank', link: '/catalogs/catalogs' },
-    { title: 'הודעות', icon: 'mdi-chat', link: '/messager/dialogs' }
+    { title: 'הודעות', icon: 'mdi-chat', link: '/messager/dialogs' },
+    {
+      title: 'אודותינו',
+      icon: 'mdi-card-account-details-outline',
+      link: '/about'
+    }
   ],
   learningModule_categories: [
     {
       name: 'פריפיל סטודנט',
       routing: '/learningModule/student',
-      key: 'student'
+      key: 'student',
+      img: require('~/assets/studentsLogo.png')
     },
     {
       name: 'פרופיל מורה',
       routing: '/learningModule/teacher',
-      key: 'teacher'
+      key: 'teacher',
+      img: require('~/assets/teacherLogo.png')
     }
     // { name: 'ספרייה', routing: '/learningModule/base', key: 'base' }
   ],
@@ -162,5 +174,6 @@ export default {
     mb: 'מגאבייט'
   },
   notspecified: 'Not specified',
-  cancel: 'לבטל'
+  cancel: 'לבטל',
+  about: `פרויקט בינלאומי ייחודי למציאת חומרי לימוד במגוון נושאים ומורים פרטיים לתלמידי בית ספר וסטודנטים, בדגש על מוסד לימודים מסוים. כאן תוכלו למצוא דפי נוסחאות, שלבי פתרון מפורטים וחומרים נוספים שיעזרו לך להתכונן טוב יותר לבחינות. כמו כן, תוכלו למצוא גם מורים בעלי ניסיון הוראה במוסד לימודים שלכם.`
 }

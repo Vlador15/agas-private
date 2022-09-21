@@ -1,16 +1,24 @@
 <template>
   <div>
     <!--------------------- LOGOUT BUTTON ----------------------->
-    <v-btn
-      fab
-      small
-      elevation="0"
-      color="primary"
-      dark
-      @click.stop="dialog = true"
-    >
-      <v-icon>{{ svg.logout }}</v-icon>
-    </v-btn>
+
+    <v-tooltip bottom>
+      <template v-slot:activator="{ on, attrs }">
+        <v-btn
+          v-bind="attrs"
+          fab
+          small
+          elevation="0"
+          color="primary"
+          dark
+          v-on="on"
+          @click.stop="dialog = true"
+        >
+          <v-icon>{{ svg.logout }}</v-icon>
+        </v-btn>
+      </template>
+      <span>{{ $t('auth.logout') }}</span>
+    </v-tooltip>
     <!--------------------- END LOGOUT BUTTON ----------------------->
 
     <v-dialog v-model="dialog" max-width="290">

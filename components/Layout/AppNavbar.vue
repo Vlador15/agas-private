@@ -15,22 +15,29 @@
     <!--------------------------- END NAVBAR TITLE ---------------------------->
     <v-spacer></v-spacer>
 
-    <v-avatar
-      class="mr-3 hover"
-      @click="
-        $route.path !== '/profile'
-          ? $router.push({ name: `profile___${$i18n.locale}` })
-          : ''
-      "
-    >
-      <img
-        v-if="userCredentials"
-        :src="userCredentials.imageUrl"
-        :alt="userCredentials.handle"
-        size="128"
-        style="object-fit: cover"
-      />
-    </v-avatar>
+    <v-tooltip bottom>
+      <template v-slot:activator="{ on, attrs }">
+        <v-avatar
+          v-bind="attrs"
+          class="mr-3 hover"
+          v-on="on"
+          @click="
+            $route.path !== '/profile'
+              ? $router.push({ name: `profile___${$i18n.locale}` })
+              : ''
+          "
+        >
+          <img
+            v-if="userCredentials"
+            :src="userCredentials.imageUrl"
+            :alt="userCredentials.handle"
+            size="128"
+            style="object-fit: cover"
+          />
+        </v-avatar>
+      </template>
+      <span>{{ $t('profile.profile') }}</span>
+    </v-tooltip>
 
     <!--------------------------- NOTIFICATIONS BUTTON ---------------------------->
     <AppNotificationsMenu
@@ -45,27 +52,41 @@
 
     <!--------------------------- LOGIN/SIGNUP BUTTONS ---------------------------->
     <div v-if="!isAuthenticated" class="center">
-      <v-btn
-        exact
-        :to="localePath('login')"
-        icon
-        color="primary"
-        dark
-        class="mr-2"
-      >
-        <v-icon>{{ svg.login }}</v-icon>
-      </v-btn>
+      <v-tooltip bottom>
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn
+            v-bind="attrs"
+            exact
+            :to="localePath('login')"
+            icon
+            color="primary"
+            dark
+            class="mr-2"
+            v-on="on"
+          >
+            <v-icon>{{ svg.login }}</v-icon>
+          </v-btn>
+        </template>
+        <span>{{ $t('auth.signIn') }}</span>
+      </v-tooltip>
 
-      <v-btn
-        exact
-        :to="localePath('signup')"
-        icon
-        color="primary"
-        dark
-        class="mr-2"
-      >
-        <v-icon>{{ svg.logout }}</v-icon>
-      </v-btn>
+      <v-tooltip bottom>
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn
+            v-bind="attrs"
+            exact
+            :to="localePath('signup')"
+            icon
+            color="primary"
+            dark
+            class="mr-2"
+            v-on="on"
+          >
+            <v-icon>{{ svg.logout }}</v-icon>
+          </v-btn>
+        </template>
+        <span>{{ $t('auth.signUp') }}</span>
+      </v-tooltip>
     </div>
     <!--------------------------- END LOGIN/SIGNUP BUTTONS ---------------------------->
   </v-app-bar>

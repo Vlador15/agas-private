@@ -6,7 +6,6 @@
           v-model="tab"
           background-color="#E3F2FD"
           corol="primary"
-          centered
           icons-and-text
           show-arrows
         >
@@ -51,10 +50,10 @@
                 v-show="!isAuthenticated"
               ></AppDisabledProfile>
             </v-card>
-            <v-btn class="my-8" @click="nextPage"
+            <v-btn class="mt-8 mb-4 btn-search" @click="nextPage"
               >{{ $t('studentProfile.searchTeacher') }}
             </v-btn>
-            <v-btn @click="nextPageTestSubject">
+            <v-btn class="btn-search" @click="nextPageTestSubject">
               {{ $t('studentProfile.signUpTestSubject') }}
             </v-btn>
           </v-col>
@@ -86,15 +85,20 @@
   </v-container>
 </template>
 
+<style>
+.btn-search {
+  background-color: #1e88e5 !important;
+  width: 100%;
+  color: #fff !important;
+  font-weight: bold;
+}
+</style>
+
 <script>
 // COMPONENTS
-// import AppPerfilContentLoader from '@/components/Loaders/AppPerfilLoader.vue'
 import AppProfileStudent from '@/components/studentProfile/AppProfileStudent.vue'
 import AppEditFormStudent from '@/components/studentProfile/AppEditFormStudent.vue'
 import AppDisabledProfile from '@/components/Profile/AppDisabledProfile.vue'
-// import reviews from '@/components/teacherProfile/reviews.vue'
-// import topCourses from '@/components/teacherProfile/freeCourses/topCourses.vue'
-// import botCourses from '@/components/teacherProfile/freeCourses/botCourses.vue'
 // VUEX
 import { mapState, mapGetters } from 'vuex'
 

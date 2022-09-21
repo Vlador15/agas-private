@@ -1,50 +1,65 @@
 <template>
-  <header>
-    <v-form v-if="!isLoading" ref="form" v-model="valid" lazy-validation>
-      <div class="inner">
-        <span style="font-size: 200%">{{
-          $t('studentProfile.searchOnlineClasses')
-        }}</span
-        ><br />
+  <div class="block-search">
+    <v-form
+      v-if="!isLoading"
+      ref="form"
+      v-model="valid"
+      class="block-search__container"
+      lazy-validation
+    >
+      <div class="inner-block">
+        <p style="font-size: 170%">
+          {{ $t('studentProfile.searchOnlineClasses') }}
+        </p>
 
-        <span class="main-text">
+        <p class="main-text">
           {{ $t('studentProfile.searchTeacherRightNow') }}
-        </span>
+        </p>
         <div class="fields">
-          <v-select
-            v-model="nameCategory"
-            background-color="white"
-            :label="$t('studentProfile.subCategory')"
-            filled
-            :rules="[v => !!v || $t('studentProfile.fieldRules')]"
-            :items="categoryItem"
-            required
-            @change="getSubject"
-          ></v-select>
-          <v-select
-            v-if="openSubject"
-            v-model="name"
-            background-color="white"
-            :label="$t('studentProfile.subName')"
-            filled
-            :rules="[v => !!v || $t('studentProfile.fieldRules')]"
-            :items="subjectItem"
-            required
-          ></v-select>
-          <v-text-field
-            v-model="city"
-            clearable
-            background-color="white"
-            height="56px"
-            :label="$t('studentProfile.location')"
-          ></v-text-field>
+          <v-row class="d-flex">
+            <v-select
+              v-model="nameCategory"
+              background-color="white"
+              :label="$t('studentProfile.subCategory')"
+              filled
+              :rules="[v => !!v || $t('studentProfile.fieldRules')]"
+              :items="categoryItem"
+              required
+              @change="getSubject"
+            ></v-select>
+            <v-select
+              v-if="openSubject"
+              v-model="name"
+              background-color="white"
+              :label="$t('studentProfile.subName')"
+              filled
+              :items="subjectItem"
+              class="field-hint"
+              :hint="$t('optional')"
+              persistent-hint
+            ></v-select>
+          </v-row>
+          <v-row>
+            <v-text-field
+              v-model="city"
+              clearable
+              background-color="white"
+              height="56px"
+              class="search-city field-hint"
+              :label="$t('studentProfile.location')"
+              :hint="$t('optional')"
+              persistent-hint
+            ></v-text-field>
+          </v-row>
         </div>
-        <v-btn :disabled="!valid" class="search" x-large @click="pageTeachers">
-          {{ $t('studentProfile.search') }}
-        </v-btn>
+        <v-row>
+          <v-btn class="search" x-large @click="pageTeachers">
+            {{ $t('studentProfile.search') }}
+          </v-btn>
+        </v-row>
       </div>
     </v-form>
-  </header>
+  </div>
 </template>
 
 <script>
@@ -55,28 +70,6 @@ export default {
   data() {
     return {
       dataFilter: {},
-      // ruItem: [
-      //   this.$t('studentProfile.math'),
-      //   this.$t('studentProfile.language'),
-      //   this.$t('studentProfile.physics'),
-      //   this.$t('studentProfile.geography')
-      // ],
-      // heItem: [
-      //   'תמטיקה תיכון 3 יח',
-      //   'מתמטיקה תיכון 4 יח',
-      //   'מתמטיקה תיכון 5 יחידות',
-      //   'אלגברה',
-      //   'חדוא 1',
-      //   'חדוא 2',
-      //   'חדוא 3',
-      //   'אינפי 1',
-      //   'אינפי 2',
-      //   'אינפי 3',
-      //   'תורת הקבוצות',
-      //   'קומבינטוריקה',
-      //   'הסתברות'
-      // ],
-      // itemSub: [],
       itemTeacher: [
         this.$t('studentProfile.moscow'),
         this.$t('studentProfile.volgograd')
@@ -96,11 +89,6 @@ export default {
   },
   async mounted() {
     await this.getCategory()
-    // if (this.$i18n.locale === 'ru') {
-    //   this.itemSub = [...this.ruItem]
-    // } else {
-    //   this.itemSub = [...this.heItem]
-    // }
     this.isLoading = false
   },
   methods: {
@@ -109,14 +97,12 @@ export default {
       this.categoryItem = [...this.getCategoryList]
     },
     async sendSearchTeacher() {
+      this.dataFilter.nameCategory = this.nameCategory
       this.dataFilter.subject = this.name
       if (this.city) {
         this.dataFilter.citiesForLessons = [this.city]
       }
       await this.$store.dispatch('POST_TEACHER_FILTER', this.dataFilter)
-      // this.$router.push({
-      //   name: `learningModule-listTeachers___${this.$i18n.locale}`
-      // })
       this.$router.push({
         name: `learningModule-listTeachers___${this.$i18n.locale}`,
         params: { dataFilter: this.dataFilter }
@@ -137,16 +123,31 @@ export default {
   }
 }
 </script>
-<style scoped>
-header {
+
+<style>
+.field-hint .v-messages__message {
+  color: #ffffffb0;
+}
+.v-messages__message:before {
+  content: '*';
+  margin-right: 0.2rem;
+}
+
+.search-city .v-input__slot {
+  padding: 0 12px;
+}
+
+.block-search {
   position: relative;
   background: url(https://cdn.discordapp.com/attachments/914528007132180521/930445892153114664/12-frustrated-student.png)
     center no-repeat;
   -webkit-background-size: cover;
   background-size: cover;
+  width: 100%;
+  height: 100%;
 }
 
-header:after {
+.block-search:after {
   content: '';
   position: absolute;
   top: 0;
@@ -157,34 +158,28 @@ header:after {
   z-index: 2;
 }
 
-.main-text {
-  position: relative;
-  top: 100px;
+.block-search__container {
+  position: absolute;
   display: inline-block;
+  position: absolute;
+  z-index: 3;
+  left: 50px;
+  top: 50px;
+  color: #fff;
+  text-align: left;
+}
+
+.main-text {
+  top: 10px;
   font-size: 20px;
 }
 
 .search {
-  position: relative;
-  top: 150px;
-
-  display: inline-block;
+  top: 50px;
 }
 .fields {
   position: relative;
-  top: 150px;
+  top: 10px;
   width: 50%;
-}
-
-.inner {
-  display: inline-block;
-  position: relative;
-  z-index: 3;
-  right: 160px;
-  bottom: 100px;
-
-  color: #fff;
-  text-align: left;
-  padding: 200px;
 }
 </style>

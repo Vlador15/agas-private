@@ -220,7 +220,7 @@ export default {
     getFilter() {
       const { dataFilter } = this.$route.params
 
-      if (dataFilter && dataFilter.subject) {
+      if (dataFilter) {
         this.dataFilter.subject = dataFilter.subject
         this.subject = dataFilter.subject
         this.nameCategory = dataFilter.nameCategory

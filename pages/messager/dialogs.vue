@@ -14,7 +14,7 @@
             <nuxt-link
               class="fullname"
               :to="{
-                path: `/ru/messager/dialog/${dialog.uid}`
+                path: `${getLocale()}/messager/dialog/${dialog.uid}`
               }"
             >
               <p>{{ dialog.fullName }}</p>
@@ -56,6 +56,9 @@ export default {
     this.getDialogs()
   },
   methods: {
+    getLocale() {
+      return this.$i18n.locale === 'he' ? '' : `/${this.$i18n.locale}`
+    },
     getDialogs() {
       const token = localStorage.getItem('auth._token.local')
       this.$socket.emit('get_dialogs', {
@@ -96,7 +99,7 @@ export default {
   display: flex;
   align-items: center;
   p {
-    margin: 0 0 0 1rem;
+    margin: 0 1rem;
     font-size: 20px;
   }
 }

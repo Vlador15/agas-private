@@ -1,5 +1,6 @@
 export default {
   login: 'כניסה',
+  logout: 'יציאה',
   emailErr: 'תכניסו דואר אלקטרוני',
   password: 'סיסמא',
   pwErr: 'הזן את הסיסמה',

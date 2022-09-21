@@ -28,13 +28,14 @@ export default {
     {
       title: 'Publications',
       icon: 'mdi-newspaper-variant-multiple-outline',
-      link: '/en',
+      link: '/en/posts',
       home: true
     },
     { title: 'Profile', icon: 'mdi-account-outline', link: '/en/profile' },
     { title: 'Barting', icon: 'mdi-bitcoin', link: '/en/barting' },
     // { title: 'Board', icon: 'mdi-clipboard-text', link: '/en/board' },
-    { title: 'Subscriptions', icon: 'mdi-bank', link: '/en/catalogs/catalogs' }
+    { title: 'Subscriptions', icon: 'mdi-bank', link: '/en/catalogs/catalogs' },
+    { title: 'About', icon: 'mdi-library-books', link: '/en/about' }
   ],
   main_categories: [
     { name: 'Pets', routing: '/en/board/pets', key: 'pets' },

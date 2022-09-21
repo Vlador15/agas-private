@@ -4,7 +4,7 @@
       <v-row class="px-12 pt-6 justify-center">
         <!----------- PERSONAL ---------------------->
         <v-row class="pb-12 justify-center">
-          <v-col cols="12" md="4">
+          <v-col cols="12" md="6">
             <v-text-field
               v-model="dataStudent.fullName"
               clearable
@@ -15,7 +15,7 @@
               :disabled="disabled"
             ></v-text-field>
           </v-col>
-          <v-col cols="12" md="4">
+          <v-col cols="12" md="6">
             <v-select
               key="value"
               v-model="dataStudent.sex"
@@ -25,7 +25,7 @@
               :disabled="disabled"
             ></v-select>
           </v-col>
-          <v-col cols="12" md="4">
+          <v-col cols="12" md="6">
             <v-menu
               ref="menu"
               v-model="menu"
@@ -65,7 +65,7 @@
               </v-date-picker>
             </v-menu>
           </v-col>
-          <v-col cols="12" md="4">
+          <v-col cols="12" md="6">
             <v-autocomplete
               v-model="country"
               :rules="[() => !!country || $t('studentProfile.fieldRules')]"
@@ -76,7 +76,7 @@
               @input="onInput"
             ></v-autocomplete>
           </v-col>
-          <v-col cols="12" md="4">
+          <v-col cols="12" md="6">
             <v-text-field
               v-model="city"
               :label="$t('studentProfile.location')"
@@ -85,16 +85,8 @@
               clear-icon="mdi-close-circle"
               :disabled="disabled"
             ></v-text-field>
-            <!-- <v-autocomplete
-              v-model="city"
-              :rules="[v => !!v || $t('teacherProfile.fieldRules')]"
-              :items="cityItems"
-              :prepend-inner-icon="svg.location"
-              :label="$t('teacherProfile.location')"
-              :disabled="disabled"
-            ></v-autocomplete> -->
           </v-col>
-          <v-col cols="12" md="4">
+          <v-col cols="12" md="6">
             <v-text-field
               v-model="dataStudent.phone"
               :prepend-inner-icon="svg.phone"
@@ -107,7 +99,7 @@
             ></v-text-field>
           </v-col>
 
-          <v-col cols="12" md="4">
+          <v-col cols="12" md="6">
             <v-text-field
               v-model="dataStudent.email"
               :prepend-inner-icon="svg.email"
@@ -118,7 +110,7 @@
               :disabled="disabled"
             ></v-text-field>
           </v-col>
-          <v-col cols="12" md="4">
+          <v-col cols="12" md="6">
             <v-textarea
               v-model="dataStudent.contactInformation"
               clearable
@@ -132,7 +124,7 @@
             ></v-textarea>
           </v-col>
 
-          <v-col cols="12" md="4">
+          <v-col cols="12" md="6">
             <v-select
               v-model="dataStudent.education"
               :items="educationItems"
@@ -142,21 +134,7 @@
             ></v-select>
           </v-col>
 
-          <!-- <v-col cols="12" md="4">
-            <v-textarea
-              v-model="dataStudent.placeOfWork"
-              clearable
-              auto-grow
-              rows="2"
-              row-height="10"
-              :prepend-inner-icon="svg.office"
-              clear-icon="mdi-close-circle"
-              :label="$t('teacherProfile.placeOfWork')"
-              :disabled="disabled"
-            ></v-textarea>
-          </v-col> -->
-
-          <v-col cols="12" md="4">
+          <v-col cols="12" md="6">
             <v-textarea
               v-model="dataStudent.aboutMe"
               clearable
@@ -169,138 +147,8 @@
               :disabled="disabled"
             ></v-textarea>
           </v-col>
-
-          <!-- <v-col cols="12" md="4">
-            <v-textarea
-              v-model="dataStudent.descriptionLesson"
-              clearable
-              auto-grow
-              rows="2"
-              row-height="10"
-              :prepend-inner-icon="svg.skill"
-              clear-icon="mdi-close-circle"
-              :label="$t('teacherProfile.descriptionLesson')"
-              :disabled="disabled"
-            ></v-textarea>
-          </v-col> -->
         </v-row>
       </v-row>
-      <!-- <v-row class="pt-n10 px-7 justify-center">
-        <v-col v-for="(cityField, i) in cities" :key="i" cols="6" md="4">
-          <v-select
-            v-model="cityField.value"
-            :rules="[v => !!v || $t('teacherProfile.fieldRules')]"
-            :items="cityLessonItems"
-            :label="$t('teacherProfile.citiesForLessons')"
-            :disabled="disabled"
-            class="d-flex flex-row mb-6"
-            style="min-width: 174px"
-          ></v-select>
-          <v-autocomplete
-            v-model="cityField.value"
-            :rules="[v => !!v || $t('teacherProfile.fieldRules')]"
-            :items="cityLessonItems"
-            :label="$t('teacherProfile.citiesForLessons')"
-            :disabled="disabled"
-            class="d-flex flex-row mb-6"
-            style="min-width: 174px"
-          ></v-autocomplete> 
-          <v-text-field
-            v-model="cityField.value"
-            :rules="[v => !!v || $t('teacherProfile.fieldRules')]"
-            :label="$t('teacherProfile.citiesForLessons')"
-            :disabled="disabled"
-            class="d-flex flex-row mb-6"
-            style="min-width: 174px"
-          ></v-text-field>
-          <v-btn
-            v-if="profileEditable"
-            class="error"
-            :disabled="disabled"
-            @click="removeCity(i)"
-            >{{ $t('teacherProfile.delete') }}</v-btn
-          >
-        </v-col>
-      </v-row> -->
-      <!-- <v-row class="pt-n10 px-7 justify-center">
-        <v-col v-if="profileEditable" cols="12" md="4" class="pt-7">
-          <v-btn class="primary" @click="addCity">{{
-            $t('teacherProfile.addCity')
-          }}</v-btn>
-        </v-col>
-      </v-row> -->
-      <!-- <v-row class="px-12 pt-6 justify-center">
-        <v-col cols="12" md="6">
-          <h2 class="text-h5 center">{{ $t('teacherProfile.subjects') }}</h2>
-        </v-col>
-        <v-col cols="12" md="6" class="pa-5 my-n2 ms-5">
-          <div v-for="(sub, i) in dataStudent.subjects" :key="i">
-            <v-text-field
-              v-model="sub.name"
-              :prepend-inner-icon="svg.range"
-              clearable
-              clear-icon="mdi-close-circle"
-              :label="$t('teacherProfile.subName')"
-              :disabled="disabled"
-            ></v-text-field>
-
-            <v-checkbox
-              v-model="sub.lessonLocation"
-              :label="$t('teacherProfile.subRemotely')"
-              :value="$t('teacherProfile.subRemotely')"
-              :disabled="disabled"
-            ></v-checkbox>
-            <v-checkbox
-              v-model="sub.lessonLocation"
-              :label="$t('teacherProfile.subHomeTeacher')"
-              :value="$t('teacherProfile.subHomeTeacher')"
-              :disabled="disabled"
-            ></v-checkbox>
-
-            <v-checkbox
-              v-model="sub.lessonLocation"
-              :label="$t('teacherProfile.subHomeStudent')"
-              :value="$t('teacherProfile.subHomeStudent')"
-              :disabled="disabled"
-            ></v-checkbox>
-            <v-checkbox
-              v-model="sub.lessonLocation"
-              :label="$t('teacherProfile.subHomeTeacherOrStudent')"
-              :value="$t('teacherProfile.subHomeTeacherOrStudent')"
-              :disabled="disabled"
-            ></v-checkbox>
-
-            <v-text-field
-              v-model="sub.price"
-              :prepend-inner-icon="svg.bank"
-              clearable
-              :rules="numRules"
-              clear-icon="mdi-close-circle"
-              :label="$t('teacherProfile.subPrice')"
-              :disabled="disabled"
-            ></v-text-field>
-
-            <v-select
-              v-model="sub.currency"
-              :prepend-inner-icon="svg.currency"
-              :items="CurrencyItem"
-              :label="$t('teacherProfile.subCurrency')"
-              :disabled="disabled"
-            ></v-select>
-
-            <v-col v-if="profileEditable" cols="6" md="6" class="ma-2">
-              <v-btn class="error" @click="remove(i)">{{
-                $t('teacherProfile.delete')
-              }}</v-btn>
-            </v-col>
-          </div>
-          <v-col v-if="profileEditable" cols="6" md="6" class="ma-2">
-            <v-btn class="primary" @click="add">{{
-              $t('teacherProfile.addField')
-            }}</v-btn>
-          </v-col>
-        </v-col>
-      </v-row> -->
 
       <!----------- PERSONAL END ------------------>
 

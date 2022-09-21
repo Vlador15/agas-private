@@ -16,8 +16,7 @@
               v-model="rating"
               background-color="white"
               color="yellow accent-4"
-              dense
-              half-increments
+              dense 
               hover
               size="18"
             ></v-rating>
