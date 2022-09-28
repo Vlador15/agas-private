@@ -1,10 +1,10 @@
 <template>
-  <v-container v-if="isAuthenticated" py-3 px-6>
+  <v-container v-if="isAuthenticated" class="container" py-3 px-6>
     <v-tabs
       v-model="tab"
       background-color="#E3F2FD"
       corol="primary"
-      centered
+      left
       icons-and-text
     >
       <v-tabs-slider></v-tabs-slider>
@@ -16,7 +16,7 @@
     </v-tabs>
     <v-tabs-items v-if="userCredentials" v-model="tab">
       <v-tab-item value="tab-1">
-        <v-row>
+        <v-row class="justify-center align-center">
           <v-col cols="12" sm="12">
             <bartingHistory :userCredentials="userCredentials" />
           </v-col>
@@ -32,7 +32,7 @@
         </v-row>
       </v-tab-item>
       <v-tab-item value="tab-2">
-        <v-row class="justify-center align-center">
+        <v-row class="c-row justify-left align-left">
           <bartingNewTransactionForm
             :userCredentials="userCredentials"
             :errors="errors"
@@ -40,7 +40,7 @@
         </v-row>
       </v-tab-item>
       <v-tab-item value="tab-3">
-        <v-row class="justify-center align-center">
+        <v-row class="c-row justify-left align-left">
           <bartingBank :userCredentials="userCredentials" :errors="errors" />
         </v-row>
       </v-tab-item>
@@ -53,10 +53,10 @@
 // import AppScreamContentLoader from '@/components/Loaders/AppScreamLoader.vue'
 
 // VUEX
-import { mapState, mapGetters } from 'vuex'
-import bartingHistory from '@/components/barting/History'
 import bartingBank from '@/components/barting/Bank'
+import bartingHistory from '@/components/barting/History'
 import bartingNewTransactionForm from '@/components/barting/NewTransactionForm'
+import { mapGetters, mapState } from 'vuex'
 
 export default {
   middleware: 'auth',
@@ -91,5 +91,17 @@ export default {
 <style lang="scss" scoped>
 .theme--light.v-tabs-items {
   background-color: #e3f2fd !important;
+}
+.container {
+  @media only screen and (max-width: 600px) {
+    width: 100%;
+  }
+  width: 59%;
+}
+.c-row {
+  margin: 0px;
+}
+.v-tab {
+  cursor: pointer;
 }
 </style>

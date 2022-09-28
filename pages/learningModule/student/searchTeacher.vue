@@ -124,7 +124,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 .field-hint .v-messages__message {
   color: #ffffffb0;
 }
@@ -167,6 +167,13 @@ export default {
   top: 50px;
   color: #fff;
   text-align: left;
+}
+
+.v-application--is-rtl {
+  .block-search__container {
+    text-align: right;
+    left: 65%;
+  }
 }
 
 .main-text {

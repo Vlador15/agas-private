@@ -1,45 +1,47 @@
 <template>
-  <v-data-table
-    :headers="headers"
-    :items="getBartsHistory"
-    class="elevation-1"
-    item-key="createdAt"
-    sort-by="createdAt"
-    sortDesc
-    show-expand
-    single-expand
-    :expanded.sync="expanded"
-    :loading="loading"
-    :loading-text="$t('barting.loading')"
-    locale="ru-RU"
-    mobile-breakpoint="348"
-    style="max-width: 500px; margin: 0 auto"
-  >
-    <template v-slot:[`item.type`]="{ item }">
-      <v-chip :color="getColor(item.sender)" dark>
-        {{ item.type }}
-      </v-chip>
-    </template>
-    <template v-slot:[`item.amount`]="{ item }">
-      {{ item.amount }}<v-icon small>{{ svg.btc }}</v-icon>
-    </template>
-    <template v-slot:[`item.createdAt`]="{ item }">
-      {{ new Date(item.createdAt).toLocaleString() }}
-    </template>
-    <template v-slot:expanded-item="{ item }">
-      <td class="text-center" colspan="3">
-        <span class="font-weight-bold">{{ $t('barting.from') }}: </span>
-        {{ item.sender }}
-        <span class="font-weight-bold">{{ $t('barting.to') }}: </span>
-        {{ item.recepientMail }}
-        <br />
-        <span class="font-weight-bold">{{ $t('barting.time') }}: </span
-        >{{ new Date(item.createdAt).toLocaleString() }}
-        <span class="font-weight-bold">{{ $t('barting.comment') }}: </span>
-        {{ item.comment }}
-      </td>
-    </template>
-  </v-data-table>
+  <v-card class="mt-3 mb-6">
+    <v-data-table
+      :headers="headers"
+      :items="getBartsHistory"
+      class="elevation-1"
+      item-key="createdAt"
+      sort-by="createdAt"
+      sortDesc
+      show-expand
+      single-expand
+      :expanded.sync="expanded"
+      :loading="loading"
+      :loading-text="$t('barting.loading')"
+      locale="ru-RU"
+      mobile-breakpoint="348"
+      style="max-width: 100%; margin: 0 auto"
+    >
+      <template v-slot:[`item.type`]="{ item }">
+        <v-chip :color="getColor(item.sender)" dark>
+          {{ item.type }}
+        </v-chip>
+      </template>
+      <template v-slot:[`item.amount`]="{ item }">
+        {{ item.amount }}<v-icon small>{{ svg.btc }}</v-icon>
+      </template>
+      <template v-slot:[`item.createdAt`]="{ item }">
+        {{ new Date(item.createdAt).toLocaleString() }}
+      </template>
+      <template v-slot:expanded-item="{ item }">
+        <td class="text-center" colspan="3">
+          <span class="font-weight-bold">{{ $t('barting.from') }}: </span>
+          {{ item.sender }}
+          <span class="font-weight-bold">{{ $t('barting.to') }}: </span>
+          {{ item.recepientMail }}
+          <br />
+          <span class="font-weight-bold">{{ $t('barting.time') }}: </span
+          >{{ new Date(item.createdAt).toLocaleString() }}
+          <span class="font-weight-bold">{{ $t('barting.comment') }}: </span>
+          {{ item.comment }}
+        </td>
+      </template>
+    </v-data-table>
+  </v-card>
 </template>
 
 <script>

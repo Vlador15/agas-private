@@ -22,8 +22,8 @@
 </template>
 
 <script>
-import CountryFlag from 'vue-country-flag'
 import { Constants } from '@/scripts/conf/Constants'
+import CountryFlag from 'vue-country-flag'
 
 export default {
   name: 'LanguageSwitch',
@@ -45,6 +45,7 @@ export default {
   },
   methods: {
     switchLocale(localeCode) {
+      console.log('Locale', localeCode)
       this.$vuetify.lang.current = localeCode
       this.$dayjs.locale(localeCode)
       this.$router.push(this.switchLocalePath(localeCode))
