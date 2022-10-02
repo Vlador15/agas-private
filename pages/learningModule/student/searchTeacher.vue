@@ -25,6 +25,7 @@
               :rules="[v => !!v || $t('studentProfile.fieldRules')]"
               :items="categoryItem"
               required
+              class="select"
               @change="getSubject"
             ></v-select>
             <v-select
@@ -34,7 +35,7 @@
               :label="$t('studentProfile.subName')"
               filled
               :items="subjectItem"
-              class="field-hint"
+              class="field-hint select"
               :hint="$t('optional')"
               persistent-hint
             ></v-select>
@@ -45,7 +46,7 @@
               clearable
               background-color="white"
               height="56px"
-              class="search-city field-hint"
+              class="search-city field-hint select"
               :label="$t('studentProfile.location')"
               :hint="$t('optional')"
               persistent-hint
@@ -135,6 +136,7 @@ export default {
 
 .search-city .v-input__slot {
   padding: 0 12px;
+  border-radius: 5px 5px 0px 0px;
 }
 
 .block-search {
@@ -163,8 +165,12 @@ export default {
   display: inline-block;
   position: absolute;
   z-index: 3;
-  left: 50px;
   top: 50px;
+  display: flex;
+  width: 100%;
+  margin: 0px 100px;
+  color: #fff;
+  text-align: left;
   color: #fff;
   text-align: left;
 }
@@ -172,7 +178,6 @@ export default {
 .v-application--is-rtl {
   .block-search__container {
     text-align: right;
-    left: 65%;
   }
 }
 
@@ -184,9 +189,18 @@ export default {
 .search {
   top: 50px;
 }
+
+.v-application--is-rtl {
+  .select {
+    max-width: 300px;
+  }
+}
+.select {
+  max-width: 300px;
+}
 .fields {
   position: relative;
   top: 10px;
-  width: 50%;
+  width: 80%;
 }
 </style>
